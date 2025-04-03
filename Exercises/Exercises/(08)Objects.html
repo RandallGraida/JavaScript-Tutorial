@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Objects</title>
+</head>
+
+<body>
+  <script>
+    // Example 8
+    // 8a
+    const basketballProduct = {
+      basketball: 2095,
+      'delivery-time': '3 days'
+    };
+    console.log(basketballProduct.basketball);
+
+    // 8b
+    basketballProduct.basketball = 2595;
+    console.log(basketballProduct.basketball);
+
+    // 8c
+    console.log(basketballProduct['delivery-time']);
+
+    //8d
+    function comparePrice(product1, product2) {
+      if (product1.price > product2.price) {
+        return product2;
+      } else {
+        return product1;
+      }
+    }
+
+    const product1 = {
+      name: 'RTX 5090',
+      price: 1999
+    };
+
+    const product2 = {
+      name: 'RTX 5080',
+      price: 999
+    };
+
+    const moreAffordableProduct = comparePrice(product1, product2);
+    console.log(moreAffordableProduct);
+    
+    // 8e
+    const product3 = {
+      name: 'RTX 5070 ti',
+      price: 749
+    };
+
+    const product4 = {
+      name: 'RTX 5070',
+      price: 549
+    };
+
+    function isSameProduct(product3, product4){
+      if (product3 === product4){
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    const is_SameProduct = isSameProduct(product3, product4);
+    console.log(is_SameProduct);
+
+    // 8f
+    const lowerCase = 'Good morning';
+    console.log(lowerCase.toLowerCase());
+
+    // 8g - String repeat
+    const testString = 'test';
+    const repeatedString = testString.repeat(2);
+
+    console.log(repeatedString);
+
+    // 8h
+    function Addition(){
+      const add1 = parseFloat(prompt('Enter the first value:'));
+      const add2 = parseFloat(prompt('Enter the second value:'));
+
+      if (isNaN(add1) || isNaN(add2)) {
+      console.error('Invalid input. Please enter numeric values.');
+      return;
+      }
+
+      const sum = add1 + add2;
+      console.log(`${sum}`);
+    }
+
+    function Subtraction(){
+      const sub1 = parseFloat(prompt('Enter the first value:'));
+      const sub2 = parseFloat(prompt('Enter the second value:'));
+
+      if (isNaN(sub1) || isNaN(sub2)) {
+      console.error('Invalid input. Please enter numeric values.');
+      return;
+      }
+
+      const sub = sub1 - sub2;
+      console.log(`${sub}`);
+    }
+
+    function Multiplication(){
+      const mul1 = parseFloat(prompt('Enter the first value:'));
+      const mul2 = parseFloat(prompt('Enter the second value:'));
+
+      if (isNaN(mul1) || isNaN(mul2)) {
+      console.error('Invalid input. Please enter numeric values.');
+      return;
+      }
+
+      const mul = mul1 * mul2;
+      console.log(`${mul}`);
+    }
+
+    function Division(){
+      const div1 = parseFloat(prompt('Enter the first value:'));
+      const div2 = parseFloat(prompt('Enter the second value:'));
+
+      if (isNaN(div1) || isNaN(div2)) {
+        error('Invalid input. Please enter numeric values.');
+      return;
+      }
+
+      const div = div1 / div2;
+      console.log(`${div}`);
+    }
+
+    function Calculator(){
+      const userInput = parseFloat(prompt(`Welcome to the Calculator!\n 
+      Enter the number for your calculation\n
+      1. Addition\n
+      2. Subtraction\n
+      3. Multiplication\n
+      4. Division
+      `))
+
+        if (userInput === 1){
+          console.log(Addition());
+        }
+        if (userInput === 2){
+          console.log(Subtraction());
+        }
+        if (userInput === 3){
+          console.log(Multiplication());
+        }
+        if (userInput === 4){
+          console.log(Division());
+        } else {
+          console.error('Invalid input. Please enter numeric values.');
+        }
+      }
+
+    Calculator();
+  </script>
+</body>
+</html>

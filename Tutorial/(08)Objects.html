@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>JavaScript Objects</title>
+</head>
+
+<body>
+  <!--Objects-->
+    <!--Objects = Groups multiple values together-->
+    <!--Works like a dictionary-->
+  <script>
+   
+    const product = {
+      name: 'Socks',
+      price: 1090
+    };
+    console.log(product); // Output: { name: 'Socks', price: 1090 }
+
+    // This will display the property
+    console.log(product.name); // Output: Socks
+    console.log(product.price); // Output: 1090
+
+    product.name = 'Cotton Socks';
+    console.log(product); // Output: { name: 'Cotton Socks', price: 1090 }
+
+    product.newProperty = true;
+    console.log(product); // Output: { name: 'Cotton Socks', price: 1090, newProperty: true }
+
+    delete product.newProperty;
+    console.log(product); // Output: { name: 'Cotton Socks', price: 1090 }
+
+    // "[]" - much more specific compared to dot notation (product2.name)
+    const product2 = {
+      name: 'shirt',
+      'deliver-time': '1 day',
+      rating: {
+        stars: 4.5,
+        count: 87
+      },
+      fun: function function1(){
+        console.log('Function inside object');
+      }
+    };
+
+    console.log(product2);
+    console.log(product2.name);
+    console.log(product2['name']);
+    console.log(product2['delivery-time']);
+
+    console.log(product2.rating.stars);
+    product2.fun()
+
+    console.log(typeof console.log);
+
+    /* JSON - a file that many programming languages understand (important for sending to another computer/s)
+            * stringify - converts objects into strings
+    */
+    console.log(JSON.stringify(product2));
+
+    /* Converts JSON into Javascript object
+            * parse - converts strings into objects
+    */
+    const jsonString = JSON.stringify(product2);
+    console.log(JSON.parse(jsonString)); 
+
+    // Length of characters
+    console.log('hello'.length);
+
+    // Converts to uppercase
+    console.log('hello'.toUpperCase());
+
+    /*
+    Demonstrates object references in JavaScript:
+    - `object1` and `object2` share the same reference, so changes to one affect the other.
+    - `object3` is a separate object, so `object3 === object1` is `false`.
+    */ 
+    const object1 = {
+      message: 'hello'
+    };
+    const object2 = object1;
+
+    object1.message = 'Good job!';
+    console.log(object1);
+    console.log(object2);
+
+    const object3 = {
+      message: 'Good job!'
+    };
+    console.log(object3 === object1);
+    console.log(object2 === object1);
+
+    const object4 = {
+      message: 'Good job!',
+      price: 799
+    };
+    const {message, price} = object4;
+    console.log(message);
+    console.log(price);
+
+    // Shorthand property
+    const object5 = {
+      message,
+      method(){
+        console.log('method');
+      }
+    };
+    console.log(object5);
+    object5.method();
+  </script>
+    
+</body>
+</html>

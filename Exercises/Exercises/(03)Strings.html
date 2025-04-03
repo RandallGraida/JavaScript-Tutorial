@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>JavaScript Strings</title>
+</head>
+
+<body>
+  <script>
+    // Exercise 3: Strings
+    // 3a
+    const myNameIs = 'My name is ';
+
+    // 3b
+    const name = 'Randall';
+
+    //3c
+    // String concatenation
+    const combineName = myNameIs + name;
+    console.log(combineName);
+
+    // 3d
+    
+    console.log('Total cost: $8');
+    
+
+    // 3e
+    const coffee = 5;
+    const bagel = 3;
+    const coffeeBagel = coffee + bagel;
+
+    console.log(`Total cost: $${coffeeBagel}`)
+
+    // 3g
+    console.log('Total cost: $8.94');
+
+    // 3h
+    const coffee2 = 5.99;
+    const bagel2 = 2.95;
+    const coffeeBagel2 = coffee2 + bagel2;
+
+    // 2 decimal places
+    console.log(`Total cost: $${coffeeBagel2.toFixed(2)}`);
+
+    // 3k
+    console.log(`Items (${2 + 2}): $${(2 * 2095 + 2 * 799) / 100}`);
+
+    // 3l
+    console.log(`Shipping & handling: $${4.99 + 4.99}`)
+
+    // 3m
+    console.log(`Total before tax: $${57.88 + 9.98}`);
+
+    // 3n
+    console.log(`Total before tax: $${Math.round(67.86 * 0.10 * 100) / 100}`);
+  </script>
+
+  <!--3f-->
+  <button title="Popup" onclick="alert(`Total cost: $${coffeeBagel}`)">Receipt</button>  
+
+  <!--3i-->
+  <button title="Popup2" onclick="alert(`Total cost: $${coffeeBagel2.toFixed(2)}\nThank you, come again!`)">Receipt 2</button>  
+</body>
+</html>

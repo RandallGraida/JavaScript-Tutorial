@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial Javascript</title>
+</head>
+<body>
+
+<!--Creating a Button-->
+    <button>Hello World</button>
+
+
+<!--Creating a Paragraph-->
+    <p>Example of a paragraph.</p>
+
+
+<!--Button inside a Paragraph / Element inside element(Aka Nesting)-->
+    <p>Button inside <button>Button</button>a paragraph.</p>
+
+
+<!--Styling the Button--> 
+
+    <!--"title tooltip" = Adds an information when you hover on the element-->
+
+    <!--"onclick" adds Javascript features-->
+    <button title="tooltip" class="ButtonCss"  onclick="alert('On Click!')">Button Styling </button> <br> <br>
+    <style>
+        .ButtonCss{
+            background-color: black;
+            color: white;
+        }
+    </style>
+
+
+<!--Running Javascript on HTML-->
+    <script>
+        alert("Hello World")
+    </script>
+
+
+<!--Javascript Variables-->
+
+    <!--Variable naming is only "_" and "$"-->
+    <script>
+        let variable1 = 3;
+        console.log(variable1);
+
+        let calculation = 5 + 7;
+        console.log(calculation);
+        console.log(calculation + 5043);
+
+        let result = calculation + 6510;
+        console.log(result);
+
+        let message = 'Hello';
+        console.log(message);
+    </script>
+    
+
+<!--Cart Quantity Javascript-->
+
+    <!--" ` " = this symbol allows variable to be outputted-->
+
+    <!--Variable Re-assignment Shortcuts
+    += 2 --- variable = variable +2
+    -= 2 --- variable = variable -2
+    *= 2 --- variable = variable * 2
+    /= 2 --- variable = variable / 2
+    ++ ---   variable = variable + 1
+    -- ---   variable = variable - 1-->
+    <button class="show-Quantity" onclick="console.log(`Cart Quantity: ${cartQuantity}`);">Show Quantity</button>
+    <button class="add-to-Cart" onclick="cartQuantity++; console.log(`Cart Quantity: ${cartQuantity}`);">Add to Cart</button>   
+    <button class="add-to-Cart2x" onclick="cartQuantity += 2; console.log(`Cart Quantity: ${cartQuantity}`);">+2</button>
+    <button class="add-to-Cart3x" onclick="cartQuantity += 3; console.log(`Cart Quantity: ${cartQuantity}`);">+3</button>
+    <button class="reset-Cart" onclick="cartQuantity = 0; console.log('Cart was resetted. '); console.log(`Cart Quantity: ${cartQuantity}`);">Reset Cart</button>
+
+    <!--typeof = determines what is the data type of what you input-->
+    <script>
+        let cartQuantity = 0;
+
+        const variable2 = 3;
+    
+        console.log(typeof variable2);
+        console.log(variable2);
+    </script>
+
+
+<!--Booleans in Javascript-->
+    <!--"===" means equal to
+        "==" means loose equality-->
+    <script>
+        console.log(3 < 5);
+        console.log(5 === '5.00');
+
+        if (true) {
+            console.log('Hello');
+        } else {
+            console.log('else');
+        }
+
+ 
+        const age = 15;
+
+        if (age >= 16) {
+            console.log('You can drive');
+        } else if(age >= 14) {
+            console.log('You are not allowed to drive. But you are almost there!');
+        } else {
+            console.log('You are not allowed to drive');
+        }
+    </script>
+
+
+    <!--"&&" = AND operator - execudes code if all operands is either true / false.
+            "||" = OR operator - returns true if either operand/s is true / false.
+            "!"  = NOT operator - flips the boolean value. Ex. True will become False.-->
+    <script>
+        //  Truthy and Falsy Values acts like a "if and if else" shortcut
+
+        // Truthy Value
+        if (5) {
+            console.log('Truthy')
+        }
+
+        // Falsy Values = false, 0, '', NaN, undefined, null
+        const falsy = 5;
+
+        if (falsy) {
+            console.log('Cart has products');
+        }
+
+        console.log(!10);
+
+            // NaN 
+        console.log('Text' / 5);
+
+            // Undefined
+        let falsy2;
+        console.log(falsy2);
+
+            // Null
+        // To be done
+
+
+        // Ternary Operator? - Shortcut for a If Statement
+        const result2 = 0 ? 'Truthy' : 'Falsy';
+        console.log(result2);
+
+        // Guard Operator && - if object 1 would be false then the right side acts as a default value
+        false && console.log('Hello World'); // No output
+
+        const message2 = true && 'Hello World'; 
+        console.log(message2); // Output: Hello World
+
+        // Default Operator ||
+        const currency = 'USD' || 'PHP';
+        console.log(currency); // Output: USD
+    </script>
+
+
+<!--Functions-->
+    <!--Functions - lets us reuse code-->
+    <script>
+        function function1() {
+            console.log('Hello World');
+            console.log(2 + 2);
+        }
+
+        // Executes the function
+        function1();
+
+        // You can add variables inside the function -- this is called parameters
+        function calculateTax(cost, taxPercent = 0.5) {
+            console.log (cost * taxPercent);
+        }
+        
+        calculateTax(2000, 0.2);
+        calculateTax(56750);
+    </script>
+
+
+<!--Objects-->
+    <!--Objects = Groups multiple values together-->
+    <!--Works like a dictionary-->
+    <script>
+        const product = {
+            name: 'Socks',
+            price: 1090
+        };
+        console.log(product); // Output: { name: 'Socks', price: 1090 }
+
+        // This will display the property
+        console.log(product.name); // Output: Socks
+        console.log(product.price); // Output: 1090
+
+        product.name = 'Cotton Socks';
+        console.log(product); // Output: { name: 'Cotton Socks', price: 1090 }
+
+        product.newProperty = true;
+        console.log(product); // Output: { name: 'Cotton Socks', price: 1090, newProperty: true }
+
+        delete product.newProperty;
+        console.log(product); // Output: { name: 'Cotton Socks', price: 1090 }
+    </script>
+</body>
+</html>

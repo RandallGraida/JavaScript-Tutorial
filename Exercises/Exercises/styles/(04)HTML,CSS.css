@@ -1,0 +1,17 @@
+.addToCart {
+  background-color: yellow;
+  border-style: solid;
+  border-color: black;
+  border-width: 3px;
+}
+
+.buyNow {
+  background-color: orange;
+  border-style: solid;
+  border-color: black;
+  border-width: 3px;
+}
+
+.ex4I {
+  margin-top: 80px;
+}

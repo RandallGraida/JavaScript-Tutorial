@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>JavaScript Variables</title>
+</head>
+
+<body>
+  <script>
+    // 5a
+    const name = 'Randall';
+
+    // 5b
+    console.log(`My name is: ${name}`);
+
+    // 5c
+    // Food cost
+    const coffee = 5;
+    const bagel = 3;
+    const soup = 9;
+
+    // Food quantity
+    const coffeeCount = 1;
+    const bagelCount = 2;
+    const soupCount = 1;
+
+    // Total cost
+    const cost = (coffee * coffeeCount) + (bagel * bagelCount) + (soup * soupCount);
+    
+    console.log(cost)
+
+    // 5d
+    console.log(`Cost of food: $${cost}`);
+
+    // 5e
+    const foodTotalWithTax = cost * 110 / 100;
+
+    // 5f
+    const tax = cost * 0.1;
+    console.log(`Tax 12%: $${tax}`);
+
+    // 5g
+    console.log(`Total cost: $${foodTotalWithTax}`);
+  </script>  
+</body>
+</html>
