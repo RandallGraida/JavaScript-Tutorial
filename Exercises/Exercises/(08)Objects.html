@@ -78,84 +78,122 @@
     console.log(repeatedString);
 
     // 8h
-    function Addition(){
-      const add1 = parseFloat(prompt('Enter the first value:'));
-      const add2 = parseFloat(prompt('Enter the second value:'));
+    // Calculator
+    function calculator() {
+      // User input
+      const userInput = prompt(
+      'Welcome to the Calculator App!\n' +
+      '1. Addition\n' +
+      '2. Subtraction\n' +
+      '3. Multiplication\n' +
+      '4. Division'
+      );
 
-      if (isNaN(add1) || isNaN(add2)) {
-      console.error('Invalid input. Please enter numeric values.');
-      return;
-      }
+      const inputNumber1 = parseFloat(prompt('Enter the first number:'));
+      const inputNumber2 = parseFloat(prompt('Enter the second number:'));
 
-      const sum = add1 + add2;
-      console.log(`${sum}`);
-    }
+      let result;
 
-    function Subtraction(){
-      const sub1 = parseFloat(prompt('Enter the first value:'));
-      const sub2 = parseFloat(prompt('Enter the second value:'));
-
-      if (isNaN(sub1) || isNaN(sub2)) {
-      console.error('Invalid input. Please enter numeric values.');
-      return;
-      }
-
-      const sub = sub1 - sub2;
-      console.log(`${sub}`);
-    }
-
-    function Multiplication(){
-      const mul1 = parseFloat(prompt('Enter the first value:'));
-      const mul2 = parseFloat(prompt('Enter the second value:'));
-
-      if (isNaN(mul1) || isNaN(mul2)) {
-      console.error('Invalid input. Please enter numeric values.');
-      return;
-      }
-
-      const mul = mul1 * mul2;
-      console.log(`${mul}`);
-    }
-
-    function Division(){
-      const div1 = parseFloat(prompt('Enter the first value:'));
-      const div2 = parseFloat(prompt('Enter the second value:'));
-
-      if (isNaN(div1) || isNaN(div2)) {
-        error('Invalid input. Please enter numeric values.');
-      return;
-      }
-
-      const div = div1 / div2;
-      console.log(`${div}`);
-    }
-
-    function Calculator(){
-      const userInput = parseFloat(prompt(`Welcome to the Calculator!\n 
-      Enter the number for your calculation\n
-      1. Addition\n
-      2. Subtraction\n
-      3. Multiplication\n
-      4. Division
-      `))
-
-        if (userInput === 1){
-          console.log(Addition());
-        }
-        if (userInput === 2){
-          console.log(Subtraction());
-        }
-        if (userInput === 3){
-          console.log(Multiplication());
-        }
-        if (userInput === 4){
-          console.log(Division());
+      // Perform calculation based on user input
+      if (userInput === '1') {
+        result = inputNumber1 + inputNumber2;
+        alert(`Result: ${result}`);
+      } 
+      else if (userInput === '2') {
+        result = inputNumber1 - inputNumber2;
+        alert(`Result: ${result}`);
+      } 
+      else if (userInput === '3') {
+        result = inputNumber1 * inputNumber2;
+        alert(`Result: ${result}`);
+      } 
+      else if (userInput === '4') {
+        if (inputNumber2 !== 0) {
+          result = inputNumber1 / inputNumber2;
+          alert(`Result: ${result}`);
         } else {
-          console.error('Invalid input. Please enter numeric values.');
+          alert('Division by zero is not allowed.');
+          return;
         }
+        } else {
+        alert('Invalid option selected.');
+        return;
       }
 
-    Calculator();
-  </script>
+      // Save the last calculation to localStorage
+      const lastCalculation = {
+      firstNumber: inputNumber1,
+      secondNumber: inputNumber2,
+      operation: userInput,
+      result: result
+      };
+
+      localStorage.setItem('lastCalculation', JSON.stringify(lastCalculation));
+      alert('Last calculation saved!');
+    }
+
+    function getLastCalculation() {
+      const lastCalculation = JSON.parse(localStorage.getItem('lastCalculation'));
+      if (lastCalculation) {
+      alert(
+        `Last Calculation:\n` +
+        `First Number: ${lastCalculation.firstNumber}\n` +
+        `Second Number: ${lastCalculation.secondNumber}\n` +
+        `Operation: ${lastCalculation.operation}\n` +
+        `Result: ${lastCalculation.result}`
+      );
+      } else {
+      alert('No previous calculation found.');
+      }
+    }
+
+    // Run the calculator and display the last calculation
+    //calculator();
+    //getLastCalculation();
+
+    // 8i
+    function playGame(guess) {
+      const randomNumber = Math.random();
+      const result = randomNumber <= 0.5 ? 'Heads' : 'Tails';
+
+      if (result === guess) {
+        console.log('You win');
+        alert('You win!');
+      } else {
+        console.log('You lose');
+        alert('You lose!');
+      }
+
+      // Save the game result to localStorage
+      const gameResult = {
+        userGuess: guess,
+        actualResult: result,
+        outcome: result === guess ? 'Win' : 'Lose'
+      };
+
+      localStorage.setItem('lastGameResult', JSON.stringify(gameResult));
+      alert('Game result saved!');
+    }
+
+    function getLastGameResult() {
+      const lastGameResult = JSON.parse(localStorage.getItem('lastGameResult'));
+
+      if (lastGameResult) {
+      alert(
+        `Last Game Result:\n` +
+        `Your Guess: ${lastGameResult.userGuess}\n` +
+        `Actual Result: ${lastGameResult.actualResult}\n` +
+        `Outcome: ${lastGameResult.outcome}`
+      );
+        } else {
+        alert('No previous game result found.');
+        }
+    }
+    </script>
+
+    <!--8i-->
+    <button onclick="playGame('Heads')">Heads</button>
+    <button onclick="playGame('Tails')">Tails</button>
+    <button onclick="getLastGameResult()">Show Last Game Result</button>
 </body>
 </html>
