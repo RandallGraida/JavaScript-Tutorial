@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>JavaSrcript Functions</title>
+</head>
+
+<body>
+  <script>
+    // Function - reuses code
+    // Creates function
+    function function1(){
+      console.log('hello');
+      console.log(2 + 2);
+    }
+
+    // Outputs the function
+    function1();
+  </script>
+
+  <button 
+  onclick="cartQuantity >= 10 ? 
+  alert('The cart is full') : 
+  console.log(`Cart quantity: ${cartQuantity}`)"
+  >Show Quantity</button>
+
+  <button 
+  onclick="cartQuantity >= 10 ? 
+  alert('The cart is full') : 
+  (cartQuantity += 1, console.log(cartQuantity));"
+  >Add to Cart</button>
+
+  <button
+  onclick="cartQuantity >= 10 ?
+  alert('The cart is full') : 
+  (cartQuantity += 2, console.log(cartQuantity));"
+  >+2</button>
+
+  <button
+  onclick="cartQuantity >= 10 ? 
+  alert('The cart is full') : 
+  (cartQuantity += 3, console.log(cartQuantity));"
+  >+3</button>
+
+  <button
+  onclick="cartQuantity = 0; 
+  console.log('Cart was reset.');"
+  >Reset Cart</button>
+
+  <!--6l-->
+  <button
+  onclick="cartQuantity - 2 < 0 ? 
+  alert('Not enough items in the cart') : 
+  (cartQuantity -= 2, console.log(cartQuantity));"
+  >-2</button>
+
+  <button
+  onclick="cartQuantity - 3 < 0 ? 
+  alert('Not enough items in the cart') : 
+  (cartQuantity -= 3, console.log(cartQuantity));"
+  >-3</button>
+
+  <script>
+    // Cart quantity
+    let cartQuantity = 0;
+  </script>
+</body>
+</body>
+</html>
