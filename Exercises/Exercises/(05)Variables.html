@@ -44,5 +44,136 @@
     // 5g
     console.log(`Total cost: $${foodTotalWithTax}`);
   </script>  
+
+  <!--5h to 5k-->
+  <button 
+  onclick="console.log(`Cart quantity: ${cartQuantity}`)"
+  >Show Quantity</button>
+
+  <button 
+  onclick="cartQuantity += 1;
+  console.log(cartQuantity);"
+  >Add to Cart</button>
+
+  <button
+  onclick="cartQuantity += 2;
+  console.log(cartQuantity);"
+  >+2</button>
+
+  <button
+  onclick="cartQuantity += 3;
+  console.log(cartQuantity);"
+  >+3</button>
+
+  <button 
+  onclick = "cartQuantity += 4
+  console.log(cartQuantity);"
+  >+4</button>
+
+  <button 
+  onclick = "cartQuantity += 5
+  console.log(cartQuantity);"
+  >+5</button>
+
+  <button
+  onclick="cartQuantity -= 1;
+  console.log(cartQuantity);"
+  >-1</button>
+
+  <button
+  onclick="cartQuantity -= 2;
+  console.log(cartQuantity);"
+  >-2</button>
+
+
+  <div>
+    <button
+    onclick="cartQuantity = 0;
+    console.log('Cart was reset.');"
+    >Reset Cart</button>
+  </div>
+  
+  <script>
+    let cartQuantity = 0;
+  </script>
+
+  <!--5l to 5r-->
+  <div>
+    <button 
+    onclick="calculation += '1';
+    console.log(calculation);
+    ">1</button>
+
+    <button
+    onclick="calculation += '2';
+    console.log(calculation);
+    ">2</button>
+
+    <button
+    onclick="calculation += '3';
+    console.log(calculation);
+    ">3</button>
+  </div>
+
+  <div>
+    <button
+    onclick="calculation += '4';
+    console.log(calculation);
+    ">4</button>
+
+    <button
+    onclick="calculation += '5';
+    console.log(calculation);
+    ">5</button>
+
+    <button
+    onclick="calculation += '6';
+    console.log(calculation);
+    ">6</button>
+  </div>
+
+  <div>
+    <button
+    onclick="calculation += '7';
+    console.log(calculation);
+    ">7</button>
+
+    <button
+    onclick="calculation += '8';
+    console.log(calculation);
+    ">8</button>
+
+    <button
+    onclick="calculation += '9';
+    console.log(calculation);
+    ">9</button>
+  </div>
+
+  <div>
+    <button onclick="
+    calculation += ' + ';
+    console.log(calculation);
+    ">+</button>
+
+    <!--
+    eval - makes the code into literals (ex. eval('2 + 3') = (2) (+) (3))
+      Output: 5
+    -->
+    <button
+    onclick="
+    calculation = eval(calculation);
+    console.log(calculation);
+    ">=</button>
+
+    <button 
+    onclick="calculation = 0
+    console.log(calculation);
+    ">AC</button>
+  </div>
+
+  <script>
+    let calculation = '';
+  </script>
+
 </body>
 </html>

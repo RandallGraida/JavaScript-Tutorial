@@ -36,7 +36,203 @@
 
     console.log(greet2());
 
+    // 7d
+    function convertToFarenheit(celsius){
+      const celToFar = (celsius * 9 / 5) + 32;
+
+      console.log(celToFar);
+    }
+
+    convertToFarenheit();
+
+    // 7e
+    function convertToCelsius(farenheit){
+      const farToCel = (farenheit - 32) * 5/9;
+
+      console.log(farToCel);
+    }
+
+    convertToCelsius();
+
+    // 7f
+    function convertTemperature(degrees, unit){
+      const farenheitToCelsius = (degrees * 9/5) + 32;
+      const celsiusToFarenheit = (degrees - 32) * 5/9;
+
+      /*
+        * toLowerCase() - makes strings lowercase
+        * toFixed() - determines how many decimal places to be put in
+      */
+      if (unit.toLowerCase() === 'c'){
+        console.log(`${farenheitToCelsius.toFixed(2)}${unit}`);
+      } else if (unit.toLowerCase() === 'f'){
+        console.log(`${celsiusToFarenheit.toFixed(2)}${unit}`);
+      }
+    }
+
+    convertTemperature(1000, 'F');
+    convertTemperature(1000, 'C');
+
+    // 7g and 7i
+    function convertLength(length, from, to){
+      const milesToKm = length * 1.6;
+      const kmToMiles = length * 0.62;
+      const ftToKm = length * 0.0003048;
+      const ftToMiles = length / 5280;
+      const kmToFt = length * 3280
+      const milesToFt = length * 5280
+
+      if (from.toLowerCase() === 'miles' && to.toLowerCase() === 'km'){
+        console.log(`${milesToKm} ${to}`);
+      } else if (from.toLowerCase() === 'km' && to.toLowerCase() === 'miles'){
+        console.log(`${kmToMiles} ${to}`);
+      } else if (from.toLowerCase() === 'ft' && to.toLowerCase() === 'km'){
+        console.log(`${ftToKm} ${to}`);
+      } else if (from.toLowerCase() === 'ft' && to.toLowerCase() === 'miles'){
+        console.log(`${ftToMiles} ${to}`);
+      } else if (from.toLowerCase() === 'km' && to.toLowerCase() === 'ft'){
+        console.log(`${kmToFt} ${to}`);
+      } else if (from.toLowerCase() === 'miles' && to.LowerCase() === 'ft'){
+        console.log(`${milesToFt} ${to}`);
+      }
+      else {
+        console.log('Invalid Units');
+      }
+    }
+
+    convertLength(5000, 'km', 'ft');
+
+    
+  </script> 
+
+  <!--7j-->
+  <div>
+    <button 
+    onclick="calculation += '1';
+    console.log(calculation);
+    ">1</button>
+
+    <button
+    onclick="calculation += '2';
+    console.log(calculation);
+    ">2</button>
+
+    <button
+    onclick="calculation += '3';
+    console.log(calculation);
+    ">3</button>
+  </div>
+
+  <div>
+    <button
+    onclick="calculation += '4';
+    console.log(calculation);
+    ">4</button>
+
+    <button
+    onclick="calculation += '5';
+    console.log(calculation);
+    ">5</button>
+
+    <button
+    onclick="calculation += '6';
+    console.log(calculation);
+    ">6</button>
+  </div>
+
+  <div>
+    <button
+    onclick="calculation += '7';
+    console.log(calculation);
+    ">7</button>
+
+    <button
+    onclick="calculation += '8';
+    console.log(calculation);
+    ">8</button>
+
+    <button
+    onclick="calculation += '9';
+    console.log(calculation);
+    ">9</button>
+  </div>
+
+  <div>
+    <button onclick="
+    calculation += ' + ';
+    console.log(calculation);
+    ">+</button>
+
+    <!--
+    eval - makes the code into literals (ex. eval('2 + 3') = (2) (+) (3))
+      Output: 5
+    -->
+    <button
+    onclick="
+    calculation = eval(calculation);
+    console.log(calculation);
+    ">=</button>
+
+    <button 
+    onclick="calculation = 0
+    console.log(calculation);
+    ">AC</button>
+  </div>
+
+  <script>
+    // let calculation = '';
+    function updateCalculation(output){
+      let calculation = '';
+
+
+    }
   </script>
-</body>
+
+  <!--7k to 7l-->
+  <button 
+  onclick="cartQuantity >= 10 ? 
+  alert('The cart is full') : 
+  console.log(`Cart quantity: ${cartQuantity}`)"
+  >Show Quantity</button>
+
+  <button 
+  onclick="cartQuantity >= 10 ? 
+  alert('The cart is full') : 
+  (cartQuantity += 1, console.log(cartQuantity));"
+  >Add to Cart</button>
+
+  <button
+  onclick="cartQuantity >= 10 ?
+  alert('The cart is full') : 
+  (cartQuantity += 2, console.log(cartQuantity));"
+  >+2</button>
+
+  <button
+  onclick="cartQuantity >= 10 ? 
+  alert('The cart is full') : 
+  (cartQuantity += 3, console.log(cartQuantity));"
+  >+3</button>
+
+  <button
+  onclick="cartQuantity = 0; 
+  console.log('Cart was reset.');"
+  >Reset Cart</button>
+
+  <button
+  onclick="cartQuantity - 2 < 0 ? 
+  alert('Not enough items in the cart') : 
+  (cartQuantity -= 2, console.log(cartQuantity));"
+  >-2</button>
+
+  <button
+  onclick="cartQuantity - 3 < 0 ? 
+  alert('Not enough items in the cart') : 
+  (cartQuantity -= 3, console.log(cartQuantity));"
+  >-3</button>
+
+  <script>
+    // Cart quantity
+    let cartQuantity = 0;
+  </script>
 </body>
 </html>
