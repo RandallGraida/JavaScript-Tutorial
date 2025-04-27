@@ -7,129 +7,97 @@
 </head>
 
 <body>
+	<p>
+		<button onclick="
+		updateCalculation('1');
+		">1</button>
+
+		<button onclick="
+		updateCalculation('2');
+		">2</button>
+
+		<button onclick="
+		updateCalculation('3');
+		">3</button>
+
+		<button onclick="
+		updateCalculation(' + ');
+		">+</button>
+	</p>
+
+	<p>
+		<button onclick="
+		updateCalculation('4');
+		">4</button>
+
+		<button onclick="
+		updateCalculation('5');
+		">5</button>
+
+		<button onclick="
+		updateCalculation('6');
+		">6</button>
+
+		<button onclick="
+		updateCalculation(' - ');
+		">-</button>
+	</p>
+
+	<p>
+		<button onclick="
+		updateCalculation('7');
+		">7</button>
+
+		<button onclick="
+		updateCalculation('8');
+		">8</button>
+
+		<button onclick="
+		updateCalculation('9');
+		">9</button>
+
+		<button onclick="
+		updateCalculation(' * ');
+		">*</button>
+	</p>
+
+	<p>
+		<button onclick="
+		updateCalculation('0');
+		">0</button>
+
+		<button onclick="
+		updateCalculation('.');
+		">.</button>
+
+		<button onclick="
+			// Note: eval() takes a string and runs it as code.
+			// Avoid using eval() in real world projects since
+			// it can potentially be given harmful code to run.
+			// Only use eval() for learning purposes.
+		calculation = eval(calculation);
+		console.log(calculation);
+		">=</button>
+
+		<button onclick="
+		updateCalculation(' / ');
+		">/</button>
+	</p>
+
+	<p>
+		<button onclick="
+		calculation = '';
+		console.log(calculation);
+		">Clear</button>
+	</p>
+
 	<script>
-		// Exercise 1: Create a function called 'greet' that displays the message "Hello, World!" in the console
-		function greet1() {
-			console.log('Hello, World!');
-			return 0;    
-		}
+		let calculation = '';
 
-		// Exercise 2: Add a parameter to the 'greet' function called 'name' that displays the message "Hello, [name]!" in the console
-		function greet2(name = 'Simon') {
-			console.log(`Hello, ${name}!`);
-			return 0;
+		function updateCalculation(value) {
+			calculation += value;
+			console.log(calculation);
 		}
-
-		// Exercise 3: Try calling greet() without a name(it will display 'Hello undefined!'). If undefined, it will display 'Hi there!'.
-		function greet3(name) {
-			if (name === undefined) {
-				console.log('Hi there!');
-			} else {
-				console.log(`Hello, ${name}!`);
-			}
-		}
-
-		// Exercise 6: Booleans abd If-Statements
-		// 6a - 6c
-		const hour = 10;
-		const name = 'Randall'
-		if (hour <= 12 && hour > 6) {
-			console.log(`Good morning! ${name}!`);
-		} 
-		else if (hour <= 17 && hour > 13){
-			console.log(`Good afternoon ${name}!`);
-		} else {
-			console.error(NaN);
-		}
-
-		//6d 
-		const age = 5;
-		if (age <= 6 && age >= 0 || age <= 65){
-			console.log('Discount');
-		} else {
-			console.log('No discount');
-		}
-
-		//6e
-		const holdiay = false;
-		if ((age <= 6 && age >= 0 || age >= 65) && !holdiay) {
-			console.log('Discount');
-		} else {
-			console.log('No discount');
-		}
-	
-		// Exercise 5: Create a functions for temperature conversions
-		function celsiusToFarenheit(celsius = parseFloat(prompt("Enter the Celsius that will be converted")), output = (celsius * 9 / 5) + 32){
-			console.log (`${celsius} Celsius is equivalent to ${output} Farenheit`);
-		}
-
-		function farenheitToCelsius(farenheit = parseFloat(prompt("Enter the Farenheit that will be converted")), output = (farenheit * 5 / 9) + 32){
-			console.log(`${farenheit} Farenheit is equivalent to ${output} Celsius`);
-		}
-
-		function temperatureConverter(){
-			const output = parseFloat(prompt('Enter the number on the conversion you want:\n 1. Celsius to Farenheit\n 2. Farenheit to Celsius'));
-			if (output === 1)
-				celsiusToFarenheit();
-			else {
-				farenheitToCelsius();
-			} 
-		}
-
-		// Exercise 5: Length Conversions
-		function kilometersToMiles(kmToM = parseFloat(prompt("Kilometers to Miles Converter\n Enter the kilometers: ")), output = (kmToM * 0.6)){
-			console.log(`${kmToM} Kilometers is equivalent to ${output} Miles`);
-		}
-
-		function milesToKilometers(mToKm = parseFloat(prompt("Miles to Kilometeres Converter\n Enter the Miles: ")), output = (mToKm * 1.6)){
-			console.log(`${mToKm} Miles is equivalent to ${output} Kilometers`);
-		}
-
-		function kilometersToFeet(kmToFt = parseFloat(prompt('Kilometers to Feet Converter\n Enter the Kilometers: ')), output = (kmToFt * 3280.84)){
-			console.log(`${kmToFt} Kilometers is equivalent to ${output} Feet`);
-		}
-
-		function milesToFeet(mToFt = parseFloat(prompt('Miles to Feet Converter\n Enter the Miles: ')), output = (mToFt * 5280)){
-			console.log(`${mToFt} Miles is equivalent to ${output} Feet`);
-		}
-
-		function feetToKilometers(ftToKm = parseFloat(prompt('Feet to Miles Conveter\n Enter the Feet: ')), output = (ftToKm * 0.0003048)){
-			console.log(`${ftToKm} Feet is equivalent to ${output} Kilometers`);
-		}
-
-		function feetToMiles(ftToM = parseFloat(prompt('Feet to Miles Converter\n Enter the feet: ')), output = (ftToM * 0.0001894)){
-			console.log(`${ftToM} Feet is equivalent to ${output} Miles`);
-		}
-
-		function lengthConverter(){
-			const userInput = parseFloat(prompt('Enter the number on the conversion you want:\n 1. Kilometers to Miles\n 2. Miles to Kilometers\n 3. Kilometers to Feet\n 4. Miles to Feet\n 5. Feet to Kilometers\n 6. Feet to Miles'));
-				if(userInput == 2){
-					kilometersToMiles();
-				}
-				if(userInput === 2){
-					milesToKilometers();
-				}
-				if(userInput === 3){
-					kilometersToFeet();
-				}
-				if(userInput === 4){
-					milesToFeet();
-				}
-				if(userInput === 5){
-					feetToKilometers();
-				}
-				if (userInput === 6){
-					feetToMiles();
-				} else{
-					console.log('Please choose only the corresponding numbers!');
-				}
-		}
-
-		function main(){
-			lengthConverter();
-		}
-
-		// Go to 4:15:39 minutes of the Video to answer the remaining Exercises
 	</script>
 </body>
 </html>
