@@ -7,97 +7,90 @@
 </head>
 
 <body>
-	<p>
-		<button onclick="
-		updateCalculation('1');
-		">1</button>
+	<button 
+  onclick="
+	updateCartQuantity(4);
+	">Show Quantity</button>
 
-		<button onclick="
-		updateCalculation('2');
-		">2</button>
+  <button 
+  onclick="
+	updateCartQuantity(1);
+	">Add to Cart</button>
 
-		<button onclick="
-		updateCalculation('3');
-		">3</button>
+  <button
+  onclick="
+	updateCartQuantity(2);
+	">+2</button>
 
-		<button onclick="
-		updateCalculation(' + ');
-		">+</button>
-	</p>
+  <button
+  onclick="
+	updateCartQuantity(3);
+	">+3</button>
 
-	<p>
-		<button onclick="
-		updateCalculation('4');
-		">4</button>
+  <button
+  onclick="
+	updateCartQuantity(0);
+	">Reset Cart</button>
 
-		<button onclick="
-		updateCalculation('5');
-		">5</button>
+	<button onclick="
+	updateCartQuantity(-1);
+	">-1</button>
 
-		<button onclick="
-		updateCalculation('6');
-		">6</button>
+  <button
+  onclick="
+	updateCartQuantity(-2);
+	">-2</button>
 
-		<button onclick="
-		updateCalculation(' - ');
-		">-</button>
-	</p>
+  <button
+  onclick="
+	updateCartQuantity(-3);
+	">-3</button>
 
-	<p>
-		<button onclick="
-		updateCalculation('7');
-		">7</button>
+  <script>
+    // Cart quantity
+    // let cartQuantity = 0;
+    let cartQuantity = 0;
 
-		<button onclick="
-		updateCalculation('8');
-		">8</button>
+    function updateCartQuantity(quantity){ // updateCartQuantity(1);
+			cartQuantity += quantity;
 
-		<button onclick="
-		updateCalculation('9');
-		">9</button>
+			// Handle cart actions
+			if (quantity === 4){
+				cartQuantity -= 4;
+				return console.log(`Cart quantity: ${cartQuantity}`);
+			}
 
-		<button onclick="
-		updateCalculation(' * ');
-		">*</button>
-	</p>
+			// remove (1-3) items
+			if (quantity === 0){
+				cartQuantity = 0;
+				return console.log(`Cart quantity: ${cartQuantity}`);
+			}
 
-	<p>
-		<button onclick="
-		updateCalculation('0');
-		">0</button>
-
-		<button onclick="
-		updateCalculation('.');
-		">.</button>
-
-		<button onclick="
-			// Note: eval() takes a string and runs it as code.
-			// Avoid using eval() in real world projects since
-			// it can potentially be given harmful code to run.
-			// Only use eval() for learning purposes.
-		calculation = eval(calculation);
-		console.log(calculation);
-		">=</button>
-
-		<button onclick="
-		updateCalculation(' / ');
-		">/</button>
-	</p>
-
-	<p>
-		<button onclick="
-		calculation = '';
-		console.log(calculation);
-		">Clear</button>
-	</p>
-
-	<script>
-		let calculation = '';
-
-		function updateCalculation(value) {
-			calculation += value;
-			console.log(calculation);
-		}
-	</script>
+      // Show quantity, add (1-3) 
+      if (cartQuantity <= 10){
+        if (quantity === 1){
+            return console.log(`Cart quantity: ${cartQuantity}`);
+        } else if (quantity === 2){
+						return console.log(`Cart quantity: ${cartQuantity}`);
+				} else if (quantity === 3){
+						return console.log(`Cart quantity: ${cartQuantity}`);
+				} else if (quantity === -1){
+            return console.log(`Cart quantity: ${cartQuantity}`);
+        } else if (quantity === -2){
+						return console.log(`Cart quantity: ${cartQuantity}`);
+				} else if (quantity === -3){
+						return console.log(`Cart quantity: ${cartQuantity}`);
+				} else {
+            return console.log('Error');
+        }
+      } else if (cartQuantity >= 10){ // If the cart quantity is greater than 10
+          return alert('The cart is full');
+			} else if (cartQuantity < 0){
+					return alert('Error!');
+			} else {
+					return ('Error!');
+			}
+    }
+  </script>
 </body>
 </html>
