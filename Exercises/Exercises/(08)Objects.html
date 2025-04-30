@@ -8,7 +8,179 @@
 
 <body>
   <script>
+    // Objects exercise
+    // 8a to 8c
+    const amazon = {
+      basketball: 2095,
+      'delivery-time': '3 days'
+    };
+
+    console.log(amazon.basketball);
     
+    amazon.basketball = 2595;
+    
+    console.log(amazon.basketball);
+
+    console.log(amazon['delivery-time']);
+    
+    // 8d
+    const order1 = {
+      'name': 'RTX 5090',
+      'price': 2499
+    };
+
+    const order2 = {
+      'name': 'RTX 4090',
+      'price': 2000
+    };
+
+    function comparePrice(product1, product2){
+    
+      product1 = order1;
+      product2 = order2;
+
+      if (order1['price'] > order2['price']){
+        return console.log(order2);
+      } else {
+        return console.log(order1);
+      }
+    }
+    
+    comparePrice(order1, order2);
+
+    // 8e
+    const order3 = {
+      'name': 'RTX 5090',
+      'price': 2499
+    };
+
+    const order4 = {
+      'name': 'RTX 5090',
+      'price': 2499
+    };
+
+    function isSameProduct(product1, product2){
+      product1 = order3;
+      product2 = order4;
+
+      if ((order3['name'] && order3 ['price']) === (order4['name'] && order4['price'])){
+        return console.log('True');
+      } else {
+        return console.log('False');
+      }
+    }
+
+    isSameProduct(order3, order4);
+   
+    // 8f
+    // Makes string to lowercase
+    const goodMorning = 'Goodmorning';
+    console.log(goodMorning.toLowerCase());
+
+    // 8g
+    // Repeats string
+    const test = 'test';
+    console.log(test.repeat(2));
+  </script>
+
+  <!--8h-->
+  <p> 
+    <button onclick="
+		updateCalculation('1');
+		">1</button>
+
+		<button onclick="
+		updateCalculation('2');
+		">2</button>
+
+		<button onclick="
+		updateCalculation('3');
+		">3</button>
+
+		<button onclick="
+		updateCalculation(' + ');
+		">+</button>
+	</p>
+
+	<p>
+		<button onclick="
+		updateCalculation('4');
+		">4</button>
+
+		<button onclick="
+		updateCalculation('5');
+		">5</button>
+
+		<button onclick="
+		updateCalculation('6');
+		">6</button>
+
+		<button onclick="
+		updateCalculation(' - ');
+		">-</button>
+	</p>
+
+	<p>
+		<button onclick="
+		updateCalculation('7');
+		">7</button>
+
+		<button onclick="
+		updateCalculation('8');
+		">8</button>
+
+		<button onclick="
+		updateCalculation('9');
+		">9</button>
+
+		<button onclick="
+		updateCalculation(' * ');
+		">*</button>
+	</p>
+
+	<p>
+		<button onclick="
+		updateCalculation('0');
+		">0</button>
+
+		<button onclick="
+		updateCalculation('.');
+		">.</button>
+
+		<button onclick="
+			// Note: eval() takes a string and runs it as code.
+			// Avoid using eval() in real world projects since
+			// it can potentially be given harmful code to run.
+			// Only use eval() for learning purposes.
+		calculation = eval(calculation);
+		console.log(calculation);
+		">=</button>
+
+		<button onclick="
+		updateCalculation(' / ');
+		">/</button>
+	</p>
+
+	<p>
+		<button onclick="
+		calculation = '';
+		console.log(calculation);
+		">Clear</button>
+	</p>
+
+  <script>
+    let calculation = '';
+
+    let history = JSON.parse(localStorage.getItem('calculationKey')) || 0;
+
+    function updateCalculation(value) {
+      // Main calculation
+      calculation += value;
+      return console.log(calculation);
+
+      // History
+      localStorage.setItem('calculationKey', JSON.stringify(calculation));
+    }
   </script>
 </body>
 </html>
