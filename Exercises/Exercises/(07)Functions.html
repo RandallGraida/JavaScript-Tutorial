@@ -201,86 +201,88 @@
 
   <!--7k to 7l-->
   <button 
-  onclick="cartQuantity >= 10 ? 
-  alert('The cart is full') : 
-  console.log(`Cart quantity: ${cartQuantity}`)"
-  >Show Quantity</button>
+  onclick="
+	updateCartQuantity(4);
+	">Show Quantity</button>
 
   <button 
-  onclick="cartQuantity >= 10 ? 
-  alert('The cart is full') : 
-  (cartQuantity += 1, console.log(cartQuantity));"
-  >Add to Cart</button>
+  onclick="
+	updateCartQuantity(1);
+	">Add to Cart</button>
 
   <button
-  onclick="cartQuantity >= 10 ?
-  alert('The cart is full') : 
-  (cartQuantity += 2, console.log(cartQuantity));"
-  >+2</button>
+  onclick="
+	updateCartQuantity(2);
+	">+2</button>
 
   <button
-  onclick="cartQuantity >= 10 ? 
-  alert('The cart is full') : 
-  (cartQuantity += 3, console.log(cartQuantity));"
-  >+3</button>
+  onclick="
+	updateCartQuantity(3);
+	">+3</button>
 
   <button
-  onclick="cartQuantity = 0; 
-  console.log('Cart was reset.');"
-  >Reset Cart</button>
+  onclick="
+	updateCartQuantity(0);
+	">Reset Cart</button>
+
+	<button onclick="
+	updateCartQuantity(-1);
+	">-1</button>
 
   <button
-  onclick="cartQuantity - 2 < 0 ? 
-  alert('Not enough items in the cart') : 
-  (cartQuantity -= 2, console.log(cartQuantity));"
-  >-2</button>
+  onclick="
+	updateCartQuantity(-2);
+	">-2</button>
 
   <button
-  onclick="cartQuantity - 3 < 0 ? 
-  alert('Not enough items in the cart') : 
-  (cartQuantity -= 3, console.log(cartQuantity));"
-  >-3</button>
+  onclick="
+	updateCartQuantity(-3);
+	">-3</button>
 
   <script>
     // Cart quantity
     // let cartQuantity = 0;
     let cartQuantity = 0;
-    let word = '';
 
-    function updateCartQuantity(quantity, information){
-      cartQuantity += quantity;
-      word = information;
+    function updateCartQuantity(quantity){ // updateCartQuantity(1);
+			cartQuantity += quantity;
 
-      // Handle cart actions: show quantity, add (1-3), or remove (1-3) items
-      if (cartQuantity >= 10){
-        if (word.toLowerCase === 'show'){
-          return console.log(`Cart quantity: ${cartQuantity}`);
-        } else if (cartQuantity === 1){
-            cartQuantity += 1;
+			// Shows cart quantity
+			if (quantity === 4){
+				cartQuantity -= 4;
+				return console.log(`Cart quantity: ${cartQuantity}`);
+			}
+
+			// Remove (1-3) items
+			if (quantity === 0){
+				cartQuantity = 0;
+				return console.log(`Cart quantity: ${cartQuantity}`);
+			}
+
+      // Show quantity, add (1-3) 
+      if (cartQuantity <= 10){
+        if (cartQuantity < 0){
+					return alert('Error!');
+				} else if (quantity === 1){
             return console.log(`Cart quantity: ${cartQuantity}`);
-        } else if (cartQuantity === 2){
-            cartQuantity += 2;
+        } else if (quantity === 2){
+						return console.log(`Cart quantity: ${cartQuantity}`);
+				} else if (quantity === 3){
+						return console.log(`Cart quantity: ${cartQuantity}`);
+				} else if (quantity === -1){
             return console.log(`Cart quantity: ${cartQuantity}`);
-        } else if (cartQuantity === 3){
-            calculation += 3;
-            return console.log(`Cart quantity: ${cartQuantity}`);
-        } else if (word === '-1'){
-            calculation -= 1;
-            return console.log(`Cart quantity: ${cartQuantity}`);
-        } else if (word === '-2'){
-            calculation -= 2;
-            return console.log(`Cart quantity: ${cartQuantity}`);
-        } else if (word === '-3'){
-            calculation -= 3;
-            return console.log(`Cart quantity: ${cartQuantity}`);
-        } else {
+        } else if (quantity === -2){
+						return console.log(`Cart quantity: ${cartQuantity}`);
+				} else if (quantity === -3){
+						return console.log(`Cart quantity: ${cartQuantity}`);
+				} else {
             return console.log('Error');
         }
-      } else if (cartQuantity <= 10) { // If the cart quantity is greater than 10
+      } else if (cartQuantity >= 10){ // If the cart quantity is greater than 10
           return alert('The cart is full');
-      } else { // If the cart quantity is lower than 10 or wrong input
-          return alert('Error');
-      }
+			} else {
+					return ('Error!');
+			}
     }
   </script>
 </body>
