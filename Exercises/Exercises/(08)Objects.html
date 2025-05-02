@@ -166,21 +166,89 @@
 		calculation = '';
 		console.log(calculation);
 		">Clear</button>
+
+    <button onclick="
+    alert(calculation);
+    ">History</button>
 	</p>
 
   <script>
-    let calculation = '';
+    let calculation = JSON.parse(localStorage.getItem('calculation')) || '';
 
-    let history = JSON.parse(localStorage.getItem('calculationKey')) || 0;
-
-    function updateCalculation(value) {
+    function updateCalculation(value){
       // Main calculation
       calculation += value;
-      return console.log(calculation);
+      console.log(calculation);
 
       // History
-      localStorage.setItem('calculationKey', JSON.stringify(calculation));
+      localStorage.setItem('calculation', JSON.stringify(calculation));
+      alert(calculation);
     }
-  </script>
+  </script> 
+
+  <div>
+		<button onclick="
+			guessGame('heads');
+		">heads</button>
+
+		<button onclick="
+			guessGame('tails');
+		">tails</button>
+
+		<button onclick="
+			guessGame('history');
+		">History</button>
+
+		<button onclick="
+			guessGame('clear');
+		">Clear</button>
+	</div>
+
+  <script>
+		function guessGame(guess) {
+			let score = JSON.parse(localStorage.getItem('scoreboard')) || {
+				wins: 0,
+				losses: 0
+			};
+
+			if (guess === 'history') {
+				console.log(`Wins: ${score.wins}\nLosses: ${score.losses}`);
+				return;
+			}
+
+			if (guess === 'clear'){
+				score = 0;
+				localStorage.setItem('scoreboard', JSON.stringify(score));
+				return alert('Scoreboard cleared!');
+			}
+
+			let random = Math.random();
+			let result;
+
+			if (guess === 'heads' && random > 0.5) {
+				score.wins += 1;
+				result = `The answer is: Heads\nWins: ${score.wins}\nLosses: ${score.losses}`;
+				alert(result);
+			} else if (guess === 'heads' && random < 0.5) {
+					score.losses += 1;
+					result = `The answer is: Tails\nWins: ${score.wins}\nLosses: ${score.losses}`;
+					alert(result);
+			} else if (guess === 'tails' && random > 0.5) {
+					score.wins += 1;
+					result = `The answer is: Tails\nWins: ${score.wins}\nLosses: ${score.losses}`;
+					alert(result);
+			} else if (guess === 'tails' && random < 0.5) {
+					score.losses += 1;
+					result = `The answer is: Heads\nWins: ${score.wins}\nLosses: ${score.losses}`;
+					alert(result);
+			} else {
+					alert('Invalid parameter');
+					return;
+			}
+
+			localStorage.setItem('scoreboard', JSON.stringify(score));
+			console.log(result);
+		}
+	</script>
 </body>
 </html>
