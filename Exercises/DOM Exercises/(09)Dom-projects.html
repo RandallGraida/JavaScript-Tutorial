@@ -29,7 +29,8 @@
         and user experience.
       * event.key - lets you know what key is pressed down
   -->
-  <input type="text" 
+  <input 
+    type="text" 
     placeholder="Cost of order"
     class="js-CostInput" 
     onkeydown="handleCostKeyDown(event);"
@@ -39,9 +40,9 @@
     "shippingCalculator();"
   >Calculate</button> 
 
-  <p class=
-    "jsTotalCost"
-  ></p>
+  <p 
+    class="jsTotalCost">
+  </p>
 
   <script>
     // Makes the string a number (only numbers, no characters)
@@ -51,15 +52,6 @@
 
     // Window element - represents the whole browser
 
-    // Enables user to enter
-    function handleCostKeyDown(event){
-      console.log(event.key)
-
-      if (event.key === 'Enter'){
-        shippingCalculator();
-      }
-    }
-
     // Amazon shipping calculator
     function shippingCalculator(){
       const output = document.querySelector('.js-CostInput');
@@ -67,6 +59,8 @@
       /*
         * Converts string into number
           - Number()
+        * Gets the data from HTML
+          - string/function.value
       */ 
       let cost = Number(output.value);
 
@@ -77,6 +71,15 @@
       }
 
       document.querySelector('.jsTotalCost').innerHTML = `$${cost}`;
+    }
+
+    // event() - enables user to enter
+    function handleCostKeyDown(event){
+      console.log(event.key)
+
+      if (event.key === 'Enter'){
+        shippingCalculator();
+      }
     }
 
     // Subscribe button

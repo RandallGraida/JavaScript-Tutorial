@@ -8,10 +8,245 @@
 </head>
 
 <body>
-  <button>9a</button>
+  <!--Document Object Model Exercises-->
+  <!--9a-->
+  <div>
+    <button
+      class="nineA">9a
+    </button>
+
+    <button 
+      class="nineB">9b
+    </button>
+  </div>
+
+  <!--9c-->
+  <div>
+    <button
+      class="heads"
+      onclick="headsOrTails('heads');"> heads
+    </button>
+
+    <button 
+      class="tails"
+      onclick="headsOrTails('tails');"> Tails
+    </button>
+
+    <p 
+      class="headsOrTailsOutput">
+    </p>
+  </div>
+
+  <!--9d to 9f-->
+  <div>
+    <input
+      type="text"
+      class="inputName"  
+      placeholder="Name"
+      onkeydown="enter(event);" >
+
+      <button 
+        class="submitName"
+        onclick="submitName();" >Submit
+      </button>
+
+      <p 
+        class="outputOfName">
+      </p>
+  </div>
+
+  <!--9g to 9h-->
+  <div>
+    <p>Amazon Shipping Calculator</p>
+    <p>Orders under $40 = +$10 shippines.</p>
+    <p>Orders over $40 = FREE shipping.</p>
+
+    <!--
+      * onkeydown = "" 
+        - attribute is used to specify JavaScript code to execute 
+          when a key is pressed down while the element is focused. 
+          This allows you to handle keyboard interactions for improved accessibility 
+          and user experience.
+        * event.key - lets you know what key is pressed down
+    -->
+    <input 
+      type="text" 
+      placeholder="Cost of order"
+      class="js-CostInput" 
+      onkeydown="handleCostKeyDown(event);"
+    >
+
+    <button onclick=
+      "shippingCalculator();"
+    >Calculate</button> 
+
+    <p 
+      class="jsTotalCost">
+    </p>
+  </div>
+
+  <!--9h-->
+  <div>
+    <input 
+      type="text"
+      class="typeSomethingClass"
+      placeholder="Type something"
+      onkeyup="typeSomething(event);" >
+
+    <p 
+      class="typeSomethingOutput">
+    </p>
+  </div>
+
+  <!--9i-->
+  <div>
+    <button 
+      onclick="updateCartQuantity(4);">Show Quantity
+    </button>
+
+    <button 
+      onclick="updateCartQuantity(1);">Add to Cart
+    </button>
+
+    <button
+      onclick="updateCartQuantity(2);">+2
+    </button>
+
+    <button
+      onclick="updateCartQuantity(3);">+3
+    </button>
+
+    <button
+      onclick="updateCartQuantity(0);">Reset Cart
+    </button>
+
+    <button 
+      onclick="updateCartQuantity(-1);">-1
+    </button>
+
+    <button
+      onclick="updateCartQuantity(-2);">-2
+    </button>
+
+    <button
+      onclick="updateCartQuantity(-3);">-3
+    </button>
+
+    <p class="cartQuantity"></p>
+  </div>
 
   <script>
-    console.log(document.querySelector('button'));
+    // 9a and 9b
+    console.log(document.querySelector('.nineA').innerText = '9a');
+    (document.querySelector('.nineB').innerText = '9b done!'); // No need to console log 9b
+
+    // 9c
+    function headsOrTails(value){
+      if (value === 'heads'){
+        document.querySelector('.headsOrTailsOutput').innerText = 'You chose: heads';
+      } else {
+        document.querySelector('.headsOrTailsOutput').innerText = 'You chose: tails';
+      }
+    }
+
+    // 9d to 9f
+    function submitName(){
+      const inputOfUser = document.querySelector('.inputName');
+      const output = inputOfUser.value;
+
+      document.querySelector('.outputOfName').innerText = `Hello! ${output}!`;
+      console.log(document.querySelector('.outputOfName').innerText = `Hello! ${output}!`);
+    }
+
+    function enter(event){
+      console.log(event.key);
+
+      if (event.key === 'Enter'){
+        submitName();
+      }
+    }
+
+    // 9g
+    function shippingCalculator(){
+      const output = document.querySelector('.js-CostInput');
+
+      let cost = Number(output.value);
+
+      if (cost > 40){
+        cost = cost;
+      } else {
+        cost = cost + 10;
+      }
+      cost = cost.toFixed(2);
+
+      document.querySelector('.jsTotalCost').innerHTML = `$${cost}`;
+    }
+
+    function handleCostKeyDown(event){
+      console.log(event.key)
+
+      if (event.key === 'Enter'){
+        shippingCalculator();
+      }
+    }
+
+    // 9h
+    function typeSomething(event){
+      const userInput = document.querySelector('.typeSomethingClass');
+      let input = userInput.value;
+
+      document.querySelector('.typeSomethingOutput').innerHTML = input;
+
+      console.log(event.key);
+    }
+
+    // 9i
+    let cartQuantity = 0;
+
+    function updateCartQuantity(quantity){ // updateCartQuantity(1);
+			cartQuantity += quantity;
+      document.querySelector('.cartQuantity').innerHTML = `Cart quantity: ${cartQuantity}`;
+
+			// Shows cart quantity
+			if (quantity === 4){
+				cartQuantity -= 4;
+				return console.log(`Cart quantity: ${cartQuantity}`);
+			}
+
+      // Remove (1-3) items
+      if (quantity === 0){
+        cartQuantity = 0;
+        document.querySelector('.cartQuantity').innerHTML = `Cart quantity: ${cartQuantity}`;
+        return console.log(`Cart quantity: ${cartQuantity}`);
+      }
+
+      // Show quantity, add (1-3) 
+      if (cartQuantity <= 10){
+        if (cartQuantity < 0){
+					return alert('Error!');
+				} else if (quantity === 1){
+            return console.log(`Cart quantity: ${cartQuantity}`);
+        } else if (quantity === 2){
+						return console.log(`Cart quantity: ${cartQuantity}`);
+				} else if (quantity === 3){
+						return console.log(`Cart quantity: ${cartQuantity}`);
+				} else if (quantity === -1){
+            return console.log(`Cart quantity: ${cartQuantity}`);
+        } else if (quantity === -2){
+						return console.log(`Cart quantity: ${cartQuantity}`);
+				} else if (quantity === -3){
+						return console.log(`Cart quantity: ${cartQuantity}`);
+				} else {
+            return console.log('Error');
+        }
+      } else if (cartQuantity >= 10){ // If the cart quantity is greater than 10
+          return alert('The cart is full');
+			} else {
+					return ('Error!');
+			}
+  
+
+    }
   </script>
 </body>
 </html>

@@ -201,47 +201,39 @@
 
   <!--7k to 7l-->
   <button 
-  onclick="
-	updateCartQuantity(4);
-	">Show Quantity</button>
+    onclick="updateCartQuantity(4);">Show Quantity
+  </button>
 
   <button 
-  onclick="
-	updateCartQuantity(1);
-	">Add to Cart</button>
+    onclick="updateCartQuantity(1);">Add to Cart
+  </button>
 
   <button
-  onclick="
-	updateCartQuantity(2);
-	">+2</button>
+    onclick="updateCartQuantity(2);">+2
+  </button>
 
   <button
-  onclick="
-	updateCartQuantity(3);
-	">+3</button>
+    onclick="updateCartQuantity(3);">+3
+  </button>
 
   <button
-  onclick="
-	updateCartQuantity(0);
-	">Reset Cart</button>
+    onclick="updateCartQuantity(0);">Reset Cart
+  </button>
 
-	<button onclick="
-	updateCartQuantity(-1);
-	">-1</button>
-
-  <button
-  onclick="
-	updateCartQuantity(-2);
-	">-2</button>
+	<button 
+    onclick="updateCartQuantity(-1);">-1
+  </button>
 
   <button
-  onclick="
-	updateCartQuantity(-3);
-	">-3</button>
+    onclick="updateCartQuantity(-2);">-2
+  </button>
+
+  <button
+    onclick="updateCartQuantity(-3);">-3
+  </button>
 
   <script>
     // Cart quantity
-    // let cartQuantity = 0;
     let cartQuantity = 0;
 
     function updateCartQuantity(quantity){ // updateCartQuantity(1);
