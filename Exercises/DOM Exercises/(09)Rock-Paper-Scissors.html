@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rock Paper and Scissors Game</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Rock, Paper, Scissors DOM</title>
 </head>
 
 <body>
-	
-	<!--Rock, Paper, and Scissors Game-->
+  <!--Rock, Paper, and Scissors Game-->
 			<!--"Math.random()" = generates a random number between 0 and 1-->
 
 	<p>Rock, Paper, and Scissors</p>
@@ -22,6 +22,10 @@
 	<button class="Scissors"
 		onclick="playGame('Scissors')">Scissors</button>
 	
+	<p class="js-Result"></p>
+	<p class="js-Moves"></p>
+	<p class="js-Score"></p>
+
 	<!--
 	LocalStorage.removeItem - removes the local storage
 	-->
@@ -30,10 +34,12 @@
 		score.losses = 0;
 		score.ties = 0;
 		localStorage.removeItem('score');
+
+		document.querySelector('.js-Score').innerHTML = `Wins: ${score.wins}, Losses: ${score.losses}, Tie: ${score.ties}`;
 		">Reset Score</button>
 
-	<script>
-		/* Scoreboard
+    <script>
+      /* Scoreboard
 			// Initialize the score object with default values if it hasn't been set yet
 		 		* localStorage.getItem 
 				- gets the key string from localStorage.setItem	
@@ -45,6 +51,10 @@
 			losses: 0,
 			ties: 0
 		};
+
+		// Using document object model
+		// Scoreboard that you can see realtime in the website
+		updateScoreElement();
 
 		// Player Move
 		function playGame(playerMove){
@@ -66,7 +76,7 @@
 					} else if (computerMove === 'Paper'){
 						result = 'Tie';
 					} else if (computerMove === 'Scissors'){
-						result = 'loss';
+						result = 'Loss';
 					}
 
 			} else if (playerMove === 'Rock'){
@@ -94,7 +104,16 @@
 		*/
 		localStorage.setItem('score', JSON.stringify(score));
 
-		alert(` You: ${playerMove}\n Computer: ${computerMove} \n Result: ${result} \n \n Wins: ${score.wins}, Losses: ${score.losses}, Tie: ${score.ties}`);
+		// Real-time update of the score in the website
+		document.querySelector('.js-Result').innerText = `${result}`;
+		document.querySelector('.js-Moves').innerText = `You: ${playerMove} - ${computerMove} Computer`;
+		updateScoreElement();
+
+		}
+
+		// Real-time update of the score
+		function updateScoreElement(){
+			document.querySelector('.js-Score').innerHTML = `Wins: ${score.wins}, Losses: ${score.losses}, Tie: ${score.ties}`;
 		}
 
 		// Computer Move
@@ -112,6 +131,6 @@
 			}
 			return computerMove;
 		}
-	</script>
+    </script>
 </body>
 </html>

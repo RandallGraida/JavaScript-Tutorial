@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>JavaScript Dom Projects</title>
+</head>
+
+<body>
+  <!--Youtube subcribe button-->
+  <p>Youtube Subscribe Button</p>
+
+  <button onclick="
+    subscribeButton('Subscribe');" 
+    class="js-subscribe-button"
+    >Subscribe</button>
+
+  <!--Amazon shipping calculator-->
+  <p>Amazon Shipping Calculator</p>
+  <p>Orders under $40 = +$10 shippines.</p>
+  <p>Orders over $40 = FREE shipping.</p>
+
+  <!--
+    * onkeydown = "" 
+      - attribute is used to specify JavaScript code to execute 
+        when a key is pressed down while the element is focused. 
+        This allows you to handle keyboard interactions for improved accessibility 
+        and user experience.
+      * event.key - lets you know what key is pressed down
+  -->
+  <input type="text" 
+    placeholder="Cost of order"
+    class="js-CostInput" 
+    onkeydown="handleCostKeyDown(event);"
+    >
+
+  <button onclick=
+    "shippingCalculator();"
+  >Calculate</button> 
+
+  <p class=
+    "jsTotalCost"
+  ></p>
+
+  <script>
+    // Makes the string a number (only numbers, no characters)
+    String(25); 
+    console.log('25' - 5);
+    console.log('25'+ 5);
+
+    // Window element - represents the whole browser
+
+    // Enables user to enter
+    function handleCostKeyDown(event){
+      console.log(event.key)
+
+      if (event.key === 'Enter'){
+        shippingCalculator();
+      }
+    }
+
+    // Amazon shipping calculator
+    function shippingCalculator(){
+      const output = document.querySelector('.js-CostInput');
+
+      /*
+        * Converts string into number
+          - Number()
+      */ 
+      let cost = Number(output.value);
+
+      if (cost > 40){
+        cost = cost
+      } else {
+          cost = cost + 10;
+      }
+
+      document.querySelector('.jsTotalCost').innerHTML = `$${cost}`;
+    }
+
+    // Subscribe button
+    function subscribeButton(subscribe){
+      subscribe = subscribe === 'Subscribe' ? alert('Accepted') : alert('You cannot access');
+
+      const buttonElement = document.querySelector('.js-subscribe-button');
+      subscribe = buttonElement;
+
+      subscribe.innerText = subscribe.innerText === 'Subscribe' ? 'Subscribed' : 'Subscribe';
+    }
+  </script>  
+</body>
+</html>

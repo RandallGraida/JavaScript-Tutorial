@@ -9,8 +9,9 @@
 
 <body>
   <button>hello</button>
+  <button class="js-button">Second button</button>
 
-  <script>
+  <script> 
     // Name of the title of the HTML
     console.log(document.title);
 
@@ -18,16 +19,26 @@
     document.title = 'Changed';
 
     // To see the details of the HTML body
-    // The HTML element is converter into JavaScript Object
+    // The HTML element is converted into JavaScript Object
     console.log(document.body);
     console.log(typeof document.body);
 
     // Gives all the HTML in the body
-    console.log(document.body.innerHTML); 
-
+    console.log(document.body.innerHTML);
+    
+    // document.body.innerHTML = '<button>Good job!</button>';
+ 
     /*
       * DOM - combines JavaScript and HTML together
     */
+
+    // This code applies to first button in the HTML
+    // If you want other buttons other than the first, check the next lines of codes
+    console.log(document.querySelector('button').innerHTML = 'Changed');
+
+    // Allows to access other buttons other than the first
+    const buttomElement = document.querySelector('.js-button');
+    console.log(buttomElement);
   </script>
 </body>
 </html>
