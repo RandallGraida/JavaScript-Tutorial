@@ -9,7 +9,7 @@
 
 <body>
   <!--Document Object Model Exercises-->
-  <!--9a-->
+  <!--9a and 9b-->
   <div>
     <button
       class="nineA">9a
@@ -19,6 +19,12 @@
       class="nineB">9b
     </button>
   </div>
+
+  <script>
+    // 9a and 9b
+    console.log(document.querySelector('.nineA').innerText = '9a');
+    (document.querySelector('.nineB').innerText = '9b done!'); // No need to console log 9b
+  </script>
 
   <!--9c-->
   <div>
@@ -36,6 +42,17 @@
       class="headsOrTailsOutput">
     </p>
   </div>
+
+  <script>
+    // 9c
+    function headsOrTails(value){
+      if (value === 'heads'){
+        document.querySelector('.headsOrTailsOutput').innerText = 'You chose: heads';
+      } else {
+        document.querySelector('.headsOrTailsOutput').innerText = 'You chose: tails';
+      }
+    }
+  </script>
 
   <!--9d to 9f-->
   <div>
@@ -55,7 +72,26 @@
       </p>
   </div>
 
-  <!--9g to 9h-->
+  <script>
+    // 9d to 9f
+    function submitName(){
+      const inputOfUser = document.querySelector('.inputName');
+      const output = inputOfUser.value;
+
+      document.querySelector('.outputOfName').innerText = `Hello! ${output}!`;
+      console.log(document.querySelector('.outputOfName').innerText = `Hello! ${output}!`);
+    }
+
+    function enter(event){
+      console.log(event.key);
+
+      if (event.key === 'Enter'){
+        submitName();
+      }
+    }
+  </script>
+
+  <!--9g-->
   <div>
     <p>Amazon Shipping Calculator</p>
     <p>Orders under $40 = +$10 shippines.</p>
@@ -85,6 +121,32 @@
     </p>
   </div>
 
+  <script>
+    // 9g
+    function shippingCalculator(){
+      const output = document.querySelector('.js-CostInput');
+
+      let cost = Number(output.value);
+
+      if (cost > 40){
+        cost = cost;
+      } else {
+        cost = cost + 10;
+      }
+      cost = cost.toFixed(2);
+
+      document.querySelector('.jsTotalCost').innerHTML = `$${cost}`;
+    }
+
+    function handleCostKeyDown(event){
+      console.log(event.key)
+
+      if (event.key === 'Enter'){
+        shippingCalculator();
+      }
+    }
+  </script>
+
   <!--9h-->
   <div>
     <input 
@@ -97,6 +159,18 @@
       class="typeSomethingOutput">
     </p>
   </div>
+
+  <script>
+    // 9h
+    function typeSomething(event){
+      const userInput = document.querySelector('.typeSomethingClass');
+      let input = userInput.value;
+
+      document.querySelector('.typeSomethingOutput').innerHTML = input;
+
+      console.log(event.key);
+    }
+  </script>
 
   <!--9i-->
   <div>
@@ -136,70 +210,6 @@
   </div>
 
   <script>
-    // 9a and 9b
-    console.log(document.querySelector('.nineA').innerText = '9a');
-    (document.querySelector('.nineB').innerText = '9b done!'); // No need to console log 9b
-
-    // 9c
-    function headsOrTails(value){
-      if (value === 'heads'){
-        document.querySelector('.headsOrTailsOutput').innerText = 'You chose: heads';
-      } else {
-        document.querySelector('.headsOrTailsOutput').innerText = 'You chose: tails';
-      }
-    }
-
-    // 9d to 9f
-    function submitName(){
-      const inputOfUser = document.querySelector('.inputName');
-      const output = inputOfUser.value;
-
-      document.querySelector('.outputOfName').innerText = `Hello! ${output}!`;
-      console.log(document.querySelector('.outputOfName').innerText = `Hello! ${output}!`);
-    }
-
-    function enter(event){
-      console.log(event.key);
-
-      if (event.key === 'Enter'){
-        submitName();
-      }
-    }
-
-    // 9g
-    function shippingCalculator(){
-      const output = document.querySelector('.js-CostInput');
-
-      let cost = Number(output.value);
-
-      if (cost > 40){
-        cost = cost;
-      } else {
-        cost = cost + 10;
-      }
-      cost = cost.toFixed(2);
-
-      document.querySelector('.jsTotalCost').innerHTML = `$${cost}`;
-    }
-
-    function handleCostKeyDown(event){
-      console.log(event.key)
-
-      if (event.key === 'Enter'){
-        shippingCalculator();
-      }
-    }
-
-    // 9h
-    function typeSomething(event){
-      const userInput = document.querySelector('.typeSomethingClass');
-      let input = userInput.value;
-
-      document.querySelector('.typeSomethingOutput').innerHTML = input;
-
-      console.log(event.key);
-    }
-
     // 9i
     let cartQuantity = 0;
 
@@ -244,9 +254,120 @@
 			} else {
 					return ('Error!');
 			}
-  
-
     }
+  </script>
+
+  <!--9j-->
+  <p> 
+    <button 
+      onclick="
+      updateCalculation('1');">1
+    </button>
+
+		<button 
+      onclick="
+      updateCalculation('2');">2
+    </button>
+
+		<button 
+      onclick="
+      updateCalculation('3');">3
+    </button>
+
+		<button 
+      onclick="
+      updateCalculation(' + ');">+
+    </button>
+	</p>
+
+	<p>
+		<button 
+      onclick="
+      updateCalculation('4');">4
+    </button>
+
+		<button 
+      onclick="
+		  updateCalculation('5');">5
+    </button>
+
+		<button 
+      onclick="
+      updateCalculation('6');">6
+    </button>
+
+		<button 
+      onclick="
+      updateCalculation(' - ');">-
+    </button>
+	</p>
+
+	<p>
+		<button 
+      onclick="
+      updateCalculation('7');">7
+    </button>
+
+		<button 
+      onclick="
+      updateCalculation('8');">8
+    </button>
+
+		<button 
+      onclick="
+      updateCalculation('9');">9
+    </button>
+
+		<button onclick="
+		  updateCalculation(' * ');">*
+    </button>
+	</p>
+
+	<p>
+		<button 
+      onclick="
+      updateCalculation('0'); ">0
+    </button>
+
+		<button 
+      onclick="
+      updateCalculation('.');" >.
+    </button>
+
+		<button 
+      onclick="
+      calculation = eval(calculation);
+      console.log(calculation);" >=
+    </button>
+
+		<button 
+      onclick="
+      updateCalculation(' / ');" >/
+    </button>
+	</p>
+
+	<p>
+		<button onclick="
+		calculation = '';
+		console.log(calculation);
+		">Clear</button>
+	</p>
+
+  <p class="calculatorResult"></p>
+
+  <script>
+    // 9j
+    
+		function updateCalculation(value) {
+      if (typeof window.calculation === 'undefined') {
+        window.calculation = '';
+      }
+      
+      window.calculation += value;
+      document.querySelector('.calculatorResult').innerText = window.calculation;
+
+			return console.log(calculation);
+		}
   </script>
 </body>
 </html>

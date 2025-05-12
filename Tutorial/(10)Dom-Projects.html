@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>JavaScript DOM with CSS</title>
+
+  <style>
+    /*Subscribe button*/
+    .subscribeButton {
+      border: none;
+      background-color: black;
+      font-weight: bold;
+      color: white;
+      padding: 10px 15px 10px 15px;
+      border-radius: 50px;
+      cursor: pointer;
+      margin-bottom: 30px;
+    }
+
+    /*CSS for subscribe button activation*/
+    .is-Subscribed {
+      background-color: rgb(240, 240, 240);
+      color: black;
+    }
+
+    /*Cost of order input*/
+    .costInput {
+      font-size: 15px;
+      padding: 10px;
+    }
+
+    /*Calculate button*/
+    .calculateButton {
+      background-color: green;
+      color: white;
+      border: none;
+      font-size: 15px;
+      padding: 12px 15px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <!--Youtube subcribe button-->
+  <p>Youtube Subscribe Button</p>
+
+  <!--
+    Add multiple classes by separating class names with a space.
+  -->
+  <button 
+    onclick="subscribeButton();" 
+    class="js-subscribe-button subscribeButton">Subscribe
+  </button>
+
+  <!--Amazon shipping calculator-->
+  <p>Amazon Shipping Calculator</p>
+  <p>Orders under $40 = +$10 shippines.</p>
+  <p>Orders over $40 = FREE shipping.</p>
+
+  <input 
+    type="text" 
+    placeholder="Cost of order"
+    class="js-CostInput costInput" 
+    onkeydown="handleCostKeyDown(event);"
+  >
+
+  <!--Calculate button-->
+  <button onclick=
+    "shippingCalculator();"
+    class="calculateButton" >Calculate
+  </button> 
+
+  <p 
+    class="jsTotalCost">
+  </p>
+
+  <script>
+    // Amazon shipping calculator
+    function shippingCalculator(){
+      const output = document.querySelector('.js-CostInput');
+
+      let cost = Number(output.value);
+
+      if (cost > 40){
+        cost = cost
+      } else {
+          cost = cost + 10;
+      }
+
+      document.querySelector('.jsTotalCost').innerHTML = `$${cost}`;
+    }
+
+    function handleCostKeyDown(event){
+      console.log(event.key)
+
+      if (event.key === 'Enter'){
+        shippingCalculator();
+      }
+    }
+
+    // Subscribe button
+    function subscribeButton(){
+      const buttonElement = document.querySelector('.js-subscribe-button');
+      subscribe = buttonElement;
+
+      if (subscribe.innerText === 'Subscribe'){
+        buttonElement.innerText = 'Subscribed';
+        
+        // Styling using JavaScript
+        // classList.add - adds css to HTML element/s
+        buttonElement.classList.add('is-Subscribed');
+      } else {
+        buttonElement.innerText = 'Subscribe';
+        
+        // classList.remove() - removes css from HTML element/s
+        buttonElement.classList.remove('is-Subscribed');
+      }
+    }
+  </script>  
+</body>
+</html>
