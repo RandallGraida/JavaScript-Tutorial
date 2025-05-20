@@ -5,12 +5,183 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="../(10)HTML, CSS and JAVASCRIPT/(10)main.css">
-  <link rel="stylesheet" href="../(10)HTML, CSS and JAVASCRIPT/(10)main.js">
+  <script src="../(10)HTML, CSS and JAVASCRIPT/(10)main.js"></script>
 
   <title>HTML, CSS, JavaScript</title>
 </head>
 
 <body>
+  <!--10a-->
+  <button 
+    class="addToCart">Add to Cart
+  </button>
 
+  <!--10b-->
+  <div class="tenB">
+    <button 
+      class="requestNow">Request now
+    </button>
+
+    <button 
+      class="scheduleForLater">Schedule for later
+    </button>
+  </div>
+
+  <!--
+    10c - JavaScript
+  -->
+
+  <!--10d to 10g-->
+  <div class="tenD-To-G">
+    <button 
+      class="toggle gaming"
+      onclick="onAndOffButton('gaming');">Gaming
+    </button>  
+
+    <button 
+      class="toggle music"
+      onclick="onAndOffButton('music');">Music
+    </button>  
+
+    <button 
+      class="toggle tech"
+      onclick="onAndOffButton('tech');">Tech
+    </button>  
+  </div>
+
+  <!--10h-->
+  <div class="tenH">
+    <p>Amazon Shipping Calculator</p>
+    <p>Orders under $40 = +$10 shippines.</p>
+    <p>Orders over $40 = FREE shipping.</p>
+
+    <input 
+      type="text" 
+      placeholder="Cost of order"
+      class="js-CostInput costInput" 
+      onkeydown="handleCostKeyDown(event);"
+    >
+
+    <button 
+      onclick="shippingCalculator();"
+      class="calculateButton">Calculate
+    </button> 
+
+    <p 
+      class="jsTotalCost">
+    </p>
+  </div>
+  
+  <!--10i-->
+  <div>
+    <!--Real-time calculation input and output-->
+    <div class="calculatorLayout">
+      <p class="calculatorResult"></p>
+
+      <p class="finalResult"></p>
+    </div>
+    
+
+    <div>
+      <button 
+        class="calculatorStyle calculatorGray"
+        onclick="updateCalculation('1');">1
+      </button>
+
+      <button
+        class="calculatorStyle calculatorGray" 
+        onclick="updateCalculation('2');">2
+      </button>
+
+      <button 
+        class="calculatorStyle calculatorGray"
+        onclick="updateCalculation('3');">3
+      </button>
+
+      <button 
+        class="calculatorStyle calculatorOrange"
+        onclick="updateCalculation(' + ');">+
+      </button>
+    </div>
+
+    <div>
+      <button 
+        class="calculatorStyle calculatorGray"
+        onclick="updateCalculation('4');">4
+      </button>
+
+      <button 
+        class="calculatorStyle calculatorGray"
+        onclick="updateCalculation('5');">5
+      </button>
+
+      <button 
+        class="calculatorStyle calculatorGray"
+        onclick="updateCalculation('6');">6
+      </button>
+
+      <button 
+        class="calculatorStyle calculatorOrange"
+        onclick="updateCalculation(' - ');">-
+      </button>
+    </div>
+
+    <div>
+      <button 
+        class="calculatorStyle calculatorGray"
+        onclick="updateCalculation('7');">7
+      </button>
+
+      <button 
+        class="calculatorStyle calculatorGray"
+        onclick="updateCalculation('8');">8
+      </button>
+
+      <button 
+        class="calculatorStyle calculatorGray"
+        onclick="updateCalculation('9');">9
+      </button>
+
+      <button 
+        class="calculatorStyle calculatorOrange"
+        onclick="updateCalculation(' * ');">*
+      </button>
+    </div>
+
+    <div>
+      <button 
+        class="calculatorStyle calculatorGray"
+        onclick="updateCalculation('0'); ">0
+      </button>
+
+      <button
+        class="calculatorStyle calculatorGray" 
+        onclick="updateCalculation('.');" >.
+      </button>
+
+      <button
+        class="calculatorStyle calculatorGray" 
+        onclick="calculation = eval(calculation);
+          result();
+          console.log(calculation);" >=
+      </button>
+
+      <button
+        class="calculatorStyle calculatorOrange" 
+        onclick="updateCalculation(' / ');" >/
+      </button>
+    </div>
+
+    <div>
+      <button
+        class="calculatorStyle calculatorGray clear" 
+        onclick="calculation = '';
+          result();
+          updateCalculation('0');
+          console.log(calculation);">Clear
+      </button>
+    </div>
+    
+  </div>
 </body>
 </html>

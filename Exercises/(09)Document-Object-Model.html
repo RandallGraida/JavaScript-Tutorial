@@ -318,7 +318,8 @@
       updateCalculation('9');">9
     </button>
 
-		<button onclick="
+		<button 
+      onclick="
 		  updateCalculation(' * ');">*
     </button>
 	</p>
@@ -337,7 +338,7 @@
 		<button 
       onclick="
       calculation = eval(calculation);
-      console.log(calculation);" >=
+      console.log(calculation);">=
     </button>
 
 		<button 
@@ -357,7 +358,6 @@
 
   <script>
     // 9j
-    
 		function updateCalculation(value) {
       if (typeof window.calculation === 'undefined') {
         window.calculation = '';
@@ -365,6 +365,7 @@
       
       window.calculation += value;
       document.querySelector('.calculatorResult').innerText = window.calculation;
+      document.querySelector('.calculatorFinalAnswer').innerText = calculation;
 
 			return console.log(calculation);
 		}
