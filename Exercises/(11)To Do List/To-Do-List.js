@@ -13,14 +13,16 @@ function renderToDoList(){
 
     // Creates HTML code 
     const html = 
-    `<p>
-      ${name} ${dueDate} 
+    `<div>${name}</div>
+      <div>${dueDate}</div> 
       <button 
         onclick=
           "toDoList.splice(${i}, 1);
-          renderToDoList(); ">Delete
+          renderToDoList();"
+        class=
+          "deleteToDoButton">Delete
       </button>
-    </p>`;
+    `;
 
     toDoListHTML += html;
   }
