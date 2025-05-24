@@ -223,3 +223,191 @@ function countWords(wordsParameter){
 }
 
 countWords(words);
+
+// 11o to 11p
+// This will only find the first element of the word 'search' not the succeeding of the word 'search'
+console.log('11o to 11p');
+
+const sortedWords = ['hello', 'world', 'search', 'search', 'jensen huang'];
+function searchFinder(sortedWordsParameter){
+  const sortedWords = sortedWordsParameter;
+  let notSearch = -1;
+
+  for (let i = 0; i < sortedWords.length; i++){
+    const sortedWordsLooper = sortedWords[i];
+
+    if (sortedWordsLooper.toLowerCase() === 'search'){
+      // This will find which index of the array that matches the word 'search'
+      notSearch = i;
+      break;
+    } else {
+      console.log(-1);
+    }
+  }
+
+  console.log(notSearch);
+}
+
+searchFinder(sortedWords);
+
+// 11q
+/*
+  Create a function findIndex(array, word) that searches an array for a string 
+  (in the 'word' parameter) and returns the index of the first appearance of the
+  string. If it does not exist in the array, return -1.
+
+    * findIndex(['green', 'red', 'blue', 'red'], red) => 1
+    * findIndex(['green', 'red', 'blue', 'red'], yellow) => -1
+*/
+console.log('11q');
+
+const colors = ['green', 'red', 'blue', 'red'];
+const wordReference = 'Red';
+
+function findIndex(array, word){
+  const colorsPlaceholder = array;
+  const wordReferencePlaceholder = word;
+  let wordCounter = 0;
+
+  for (let i = 0; i < colorsPlaceholder.length; i++){
+    const colorsArray = colorsPlaceholder[i];
+
+    if (colorsArray.toLowerCase() === wordReferencePlaceholder.toLowerCase()){
+      wordCounter += 1;
+    } 
+  }
+
+  /*
+    Error handler if the color reference is not in the parameter
+    then it will result in -1
+  */ 
+  if (wordCounter === 0){
+    wordCounter = -1;
+  }
+
+  console.log(wordCounter);
+}
+
+findIndex(colors, wordReference);
+
+// 11r to 11s
+/*
+  Create a function removeEgg(foods) that takes an array of strings and
+  returns an array where the string 'egg' is removed. (Hint: loop through the array
+  and check if each string is 'egg'. If it is 'egg', use 'continue', to skip it.
+  If it is not 'egg', add it to the result).
+    * removeEgg(['egg', 'apple', 'egg', 'egg', 'ham']) => ['apple', 'ham']
+*/ 
+console.log('11r to 11s');
+
+const foods = ['egg', 'chicken', 'salmon', 'egg', 'egg', 'tofu'];
+// Use this reversed array method in exercise 11t and 11u which reverses the array/s
+// const reversedFoods = foods.slice();
+
+function removeEgg(foodsParameter){
+  const foodsPlaceholder = foodsParameter;
+  const foodToRemove = 'egg'
+
+  let preFinalFoods = [];
+  const finalFoods = preFinalFoods;
+  let foodToRemoveCounter = 0;
+
+  for (let i = 0; i < foodsPlaceholder.length; i++){
+    let foodsArray = foodsPlaceholder[i];
+  
+    // Remove the first 2 food to be removed then output the succeeding food to be removed
+    if (foodsArray === foodToRemove && foodToRemoveCounter < 2){
+      preFinalFoods.splice({i}, 1);
+      foodToRemoveCounter += 1;
+    } 
+
+    /*
+      Use this lines of codes that is based on exercise 11t to 11u in order to 
+      remove after succeeding the first two output of the food to be removed.
+      * Codes: 
+        if (foodsArray === foodToRemove && foodToRemoveCounter < 2){
+          foodToRemoveCounter += 1;
+        } else if (foodsArray === foodToRemove && foodToRemoveCounter >= 2){
+          preFinalFoods.splice({i}, 1);
+        }
+    */
+    preFinalFoods.push(foodsArray);
+  }
+  console.log(finalFoods);
+}
+removeEgg(foods);
+
+// 11v
+console.log('11v');
+
+const userInput = [];
+function fizzBuzz(userInputParameter){
+  let userInputPlaceholder = userInputParameter;
+  let userInputOutput = 0;
+
+  for (let i = 0; i < 20; i++){
+    userInputOutput += 1;
+    userInputPlaceholder.push(userInputOutput);
+  }
+  
+  let output = [];
+  for (let i = 0; i < userInputPlaceholder.length; i++){
+    let userInputArray = userInputPlaceholder[i];
+
+    if (userInputArray % 3 === 0 && userInputArray % 5 === 0){
+      userInputArray = 'FizzBuzz';
+    } else if (userInputArray % 3 === 0){
+      userInputArray = 'Fizz';
+    } else if (userInputArray % 5 === 0){
+      userInputArray = 'Buzz';
+    } 
+    output.push(userInputArray);
+  }
+  console.log(output);
+  
+}
+
+fizzBuzz(userInput);
+
+// 11w
+console.log('11w');
+
+const colorsReference = ['green', 'red', 'blue', 'red'];
+/**
+  * Returns an array containing only the first occurrence of each color ('red', 'green', 'blue') 
+    from the input array.
+*/
+function unique(array){
+  const colorsPlaceholder = array;
+  let wordCounter = {
+    red: 0,
+    green: 0,
+    blue: 0
+  };
+
+  const wordReference = {
+    colorRed: 'red',
+    colorGreen: 'green',
+    colorBlue: 'blue'
+  };
+
+  let uniqueOutput = [];
+
+  for (let i = 0; i < colorsPlaceholder.length; i++){
+    const colorsArray = colorsPlaceholder[i];
+
+    if (colorsArray.toLowerCase() === wordReference.colorRed.toLowerCase() && wordCounter.red < 1){
+      wordCounter.red++;
+      uniqueOutput.push(colorsArray);
+    } else if (colorsArray.toLowerCase() === wordReference.colorGreen.toLowerCase() && wordCounter.green < 1){
+        wordCounter.green++;
+        uniqueOutput.push(colorsArray);
+    } else if (colorsArray.toLowerCase() === wordReference.colorBlue.toLowerCase() && wordCounter.blue < 1){
+        wordCounter.blue++;
+        uniqueOutput.push(colorsArray);
+    }
+  }
+  console.log(uniqueOutput);
+}
+
+unique(colorsReference);

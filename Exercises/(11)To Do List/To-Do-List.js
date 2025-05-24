@@ -1,8 +1,9 @@
 // To do list array
-const toDoList = [];
+const toDoList = JSON.parse(localStorage.getItem('toDoList')) || [];
+
+renderToDoList();
 
 function renderToDoList(){
-
   let toDoListHTML = '';
 
   for (let i = 0; i < toDoList.length; i++ ){
@@ -12,21 +13,20 @@ function renderToDoList(){
     const { name, dueDate } = toDoObject;
 
     // Creates HTML code 
-    const html = 
-    `<div>${name}</div>
+    const html = `
+      <div>${name}</div>
       <div>${dueDate}</div> 
       <button 
         onclick=
           "toDoList.splice(${i}, 1);
-          renderToDoList();"
+          renderToDoList();
+          saveToStorage();"
         class=
           "deleteToDoButton">Delete
       </button>
     `;
-
     toDoListHTML += html;
   }
-
   document.querySelector('.toDoList').innerHTML = toDoListHTML;
 }
 
@@ -47,4 +47,10 @@ function addToDo(){
   inputElement.value = '';
 
   renderToDoList();
+
+  saveToStorage();
+}
+
+function saveToStorage(){
+  localStorage.setItem('toDoList', JSON.stringify(toDoList));
 }

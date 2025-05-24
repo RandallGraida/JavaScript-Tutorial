@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>JavaScript Advance Functions</title>
+</head>
+
+<body>
+  <script>
+    // JavaScript Advance Functions
+    // Function
+    function greeting(){
+      console.log('Hello');
+    }
+
+    console.log(greeting());
+
+    const num2 = 2;
+    console.log(num2);
+
+    // Function inside a variable
+    // Anonymous function - function without a name
+    const function1 = function(){
+      console.log('Test');
+    };
+
+    console.log(function1);
+    console.log(typeof function1);
+    function1();
+
+    const object1 = {
+      num: 2,
+      fun: function(){
+        console.log('Hello Jensen Huang!');
+      }
+    };
+
+    object1.fun();
+
+    // Passing value into function
+    function display(param){
+      console.log(param);
+    }
+
+    display(2);
+
+    // Passing function into function
+    function run(param){
+      param();
+    }
+
+      // This is called callback
+      // Functions are also values
+    run(function() {
+      console.log('Hello Nvidia!');
+    });
+
+    /*
+      setTimeout(function, how long to wait(number in milliseconds)) - allows us to run a
+       function in the future
+      - is a asynchronus code
+    */ 
+    setTimeout(function(){
+      console.log('Timeout');
+      console.log('timeout2');
+    }, 3000);
+
+    console.log('next line')
+
+    /*
+      setInterval(function to run in the future) - it will keep
+        running the function based on the timer you set
+      - is a asynchronus code 
+    */
+    setInterval(function(){
+      console.log('Interval');
+    }, 3000);
+  </script>  
+</body>
+</html>
