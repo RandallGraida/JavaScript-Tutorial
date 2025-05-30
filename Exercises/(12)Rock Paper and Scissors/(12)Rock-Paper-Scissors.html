@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="./main.css">
+
+  <title>Rock, Paper, Scissors DOM</title>
+</head>
+
+<body>
+  <!--Rock, Paper, and Scissors Game-->
+			<!--"Math.random()" = generates a random number between 0 and 1-->
+
+	<p
+	class="title" >Rock, Paper, and Scissors</p>
+
+	<button 
+		class="moveButton rockButton"
+		class="moveIcon"
+		><img src="./Images/Rock-Emoji.png" 
+			alt="Image of rock" >
+	</button>
+
+	<button 
+		class="moveButton paperButton"
+		class="moveIcon"><img src="./Images/Paper-Emoji.png" 
+			alt="Image of paper">
+	</button>
+
+	<button 
+		class="moveButton scissorsButton"
+		class="moveIcon"><img src="./Images/Scissors-Emoji.png" 
+			alt="Image of scissors">
+	</button>
+	
+	<p 
+		class="js-Result result">You win.
+	</p>
+
+	<p 
+		class="js-Moves">
+	</p>
+
+	<p class="js-Score score"></p>
+
+	<!--Reset button-->
+	<button 
+		class="resetScoreButton">Reset Score
+	</button>
+
+	<div>
+		<p class="resetButtonMessage">
+		</p>
+	</div>
+
+	<!--Autoplay button-->
+	<button 	
+		class="autoPlayButton">AutoPlay
+	</button>
+</body>
+
+<script src="./main.js"></script>
+</html>

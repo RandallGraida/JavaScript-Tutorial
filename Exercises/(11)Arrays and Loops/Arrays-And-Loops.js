@@ -302,7 +302,7 @@ console.log('11r to 11s');
 
 const foods = ['egg', 'chicken', 'salmon', 'egg', 'egg', 'tofu'];
 // Use this reversed array method in exercise 11t and 11u which reverses the array/s
-// const reversedFoods = foods.slice();
+// const reversedFoods = foods.slice().reverse();
 
 function removeEgg(foodsParameter){
   const foodsPlaceholder = foodsParameter;

@@ -8,7 +8,33 @@
 </head>
 
 <body>
+  <button 
+    onclick=""
+    class="button" >Click
+  </button>
+
   <script>
+    const buttonElement = document.querySelector('.button');
+    /*
+      * .addEventListener - lets us run some code when we
+        interact with the elements
+        * Does the same thing as ' onclick="" '
+        * Better to use than ' onclick="" '
+    */
+    const eventListener = () => {
+      console.log('click');
+    };
+
+    const eventListener2 = () => {
+      console.log('click');
+    };
+
+    buttonElement.addEventListener('click', eventListener);
+    buttonElement.addEventListener('click', eventListener2);
+
+    // remove event listener
+    buttonElement.removeEventListener('click', eventListener);
+
     // JavaScript Advance Functions
     // Function
     function greeting(){
@@ -77,6 +103,81 @@
     setInterval(function(){
       console.log('Interval');
     }, 3000);
+
+    /*
+      forEach() - method for looping through the array
+        - preffered method for looping through an array
+    */ 
+    
+    [
+      'make dinner',
+      'wash dishes',
+      'watch youtube'
+    ].forEach(function(value, index){
+        // Same thing as 'continue;' in for loop
+        if (value === 'wash dishes'){
+          return;
+        }
+
+        console.log(value);
+        console.log(index);
+    });
+
+    // Arrow Function
+    // Works the same way as variable in a function
+
+      // Regular function
+    const regularFunction = function(param, param2){
+      console.log('hello');
+      return 5;
+    };
+
+      // Arrow function
+    const arrowFunction = (param, param2) => {
+      console.log('arrow function:');
+      console.log('hello');
+      return 5;
+    };
+
+    arrowFunction();
+
+    const oneParam = (param) => {
+      console.log(param + 1);
+    };
+    oneParam(2);
+
+    const oneLine = () => {return 2 + 3;};
+    console.log(oneLine());
+
+    /*
+      filter() - creates a new array
+        * works similary to '.forEach()'
+        * return true, => put value in array
+        * return false, => not put value in array
+    */
+    console.log([1, -3, 5].filter((value, index) => {
+      if (value >= 0){
+        return true;
+      } else {
+          return false;
+      }
+    }));
+
+    /*
+      map() - creates a new array
+              * whatever we return => added to new array
+    */
+    console.log([1, 1, 3].map((value, index) => {
+      return value * 2;
+    }));
+
+    // Shortcuts to arrow function
+    console.log([1, 1, 3].map(value => {return value * 2;}));
+
+    /* 
+      Closure - if a function has access to a value
+                * it will always have access to that value
+    */          
   </script>  
 </body>
 </html>

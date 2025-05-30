@@ -3,10 +3,62 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Function Exercises</title>
+
+	<title class="titlePlaceholder">Function Exercises</title>
 </head>
 
 <body>
+	<button
+		class="add">Add
+  </button>
 
+	<button
+		class="remove">Remove
+  </button>
 </body>
+
+<script>
+(() => {
+	document.querySelector('.add')
+		.addEventListener('click', () => {
+			titleChange('add');
+		});
+
+	document.querySelector('.remove')
+		.addEventListener('click', () => {
+			titleChange('remove');
+		})	
+
+	let numberOfMessages = 0;
+	
+	function titleChange(addRemoveParameter){
+		const titleDocumentQuery = document.querySelector('.titlePlaceholder');
+		const originalTitle = 'JavaScript Advance Functions';
+
+		if (addRemoveParameter.toLowerCase() === 'add'){
+			setTimeout(() => {
+				numberOfMessages += 1;
+				titleDocumentQuery.innerHTML = `(${numberOfMessages}) New messages`;
+
+				setTimeout(() => {
+					titleDocumentQuery.innerHTML = originalTitle;
+				}, 1000);
+			}, 0)
+		} else if (addRemoveParameter.toLowerCase() === 'remove' && numberOfMessages > 0) {
+			setTimeout(() => {
+				numberOfMessages -= 1;
+				titleDocumentQuery.innerHTML = `(${numberOfMessages}) New messages`;
+
+				setTimeout(() => {
+					titleDocumentQuery.innerHTML = originalTitle;
+				}, 1000);
+			}, 0)
+		} else {
+			setTimeout(() => {
+				titleDocumentQuery.innerHTML = 'Add';
+			}, 0);
+		}
+	}
+})();
+</script>
 </html> 

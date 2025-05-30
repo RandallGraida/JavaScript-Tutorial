@@ -1,0 +1,45 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/*Styles for the main layout of the todo list*/
+.toDoGrid,
+.toDoInputGrid {
+  display: grid;
+  grid-template-columns: 200px 150px 100px;
+  align-items: center;
+
+  /*column-gap - sets the gap per column*/
+  column-gap: 10px;
+
+  /*row-gap - sets the gap per row*/
+  row-gap: 10px;
+
+  margin: 0px 0px 10px 0px;
+  align-items: stretch;
+}
+
+/*Styles for the main layout of the user input*/
+.toDoInput,
+.nameInput {
+  font-size: 15px;
+  padding: 6px;
+}
+
+/*Add todo button*/
+.addToDoButton {
+  background-color: green;
+  color: white;
+  border: none;
+  font-size: 15px;
+}
+
+/*Delete button*/
+.deleteToDoButton {
+  background-color: darkred;
+  color: white;
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  padding: 10px 0px 10px 0px;
+}

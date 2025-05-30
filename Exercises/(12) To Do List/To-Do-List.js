@@ -6,7 +6,9 @@ renderToDoList();
 function renderToDoList(){
   let toDoListHTML = '';
 
-  toDoList.forEach((toDoObject, index) => {
+  for (let i = 0; i < toDoList.length; i++ ){
+    const toDoObject = toDoList[i];
+
     // Shortcut for putting objects
     const { name, dueDate } = toDoObject;
 
@@ -15,29 +17,18 @@ function renderToDoList(){
       <div>${name}</div>
       <div>${dueDate}</div> 
       <button 
+        onclick=
+          "toDoList.splice(${i}, 1);
+          renderToDoList();
+          saveToStorage();"
         class=
-          "deleteToDoButton deleteToDoButtonHtml">Delete
+          "deleteToDoButton">Delete
       </button>
     `;
     toDoListHTML += html;
-  });
+  }
   document.querySelector('.toDoList').innerHTML = toDoListHTML;
- 
-  // document.querySelectorAll - gives us all the elements with the matching class
-  document.querySelectorAll('.deleteToDoButtonHtml')
-    .forEach((deleteButton, index) => {
-      deleteButton.addEventListener('click', () => {
-        toDoList.splice(index, 1);
-        renderToDoList();
-        saveToStorage();
-      });
-    }) 
 }
-
-document.querySelector('.addToDoButtonHtml')
-  .addEventListener('click', () => {
-    addToDo();
-  });
 
 function addToDo(){
   const inputElement = document.querySelector('.nameInput');
@@ -60,7 +51,6 @@ function addToDo(){
   saveToStorage();
 }
 
-// Save previous to do when you refresh page
 function saveToStorage(){
   localStorage.setItem('toDoList', JSON.stringify(toDoList));
 }
