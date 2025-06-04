@@ -1,0 +1,100 @@
+let productsHtml = '';
+
+products.forEach(product => {
+  /* 
+    Data Attribute:
+    * Has to start with the word "data" then put it "after" the class attribute
+    * Character size is always vice versa between HTML and JS 
+      (ex. HTML: data-productName, JS: dataset.productname. Or vice versa)
+    * data-ProductName="${product.name}"
+      - The add to cart html classes represents its capability to add
+        objects and arrays to the JavaScript code into the actual add to cart in the html part
+  */
+   productsHtml += `
+    <div class="p roduct-container">
+      <div class="product-image-container">
+        <img class="product-image"
+          src="${product.image}">
+      </div>
+
+      <div class="product-name limit-text-to-2-lines">
+        ${product.name};
+      </div>
+
+      <div class="product-rating-container">
+        <img class="product-rating-stars"
+          src="images/ratings/rating-${product.rating.stars * 10}.png">
+        <div class="product-rating-count link-primary">
+          ${product.rating.count}
+        </div>
+      </div>
+
+      <div class="product-price">
+        $${(product.priceCents / 100).toFixed(2)}
+      </div>
+
+      <div class="product-quantity-container">
+        <select>
+          <option selected value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+      </div>
+
+      <div class="product-spacer"></div>
+
+      <div class="added-to-cart">
+        <img src="images/icons/checkmark.png">
+        Added
+      </div>
+
+      <button class="add-to-cart-button button-primary 
+        jsAddToCart" data-product-id="${product.id}">
+        Add to Cart
+      </button>
+    </div>
+  `;
+});
+
+document.querySelector('.jsProductsGrid')
+  .innerHTML = productsHtml;
+
+document.querySelectorAll('.jsAddToCart')
+  .forEach(button => {
+    button.addEventListener('click', () => {
+      const productIdPlaceholder = button.dataset.productId;
+      productIdPlaceholder;
+
+      let matchingItem;
+
+      cart.forEach(item => {
+        if (productIdPlaceholder === item.productId){ 
+          matchingItem = item;
+        }
+      });
+
+      if (matchingItem){
+        matchingItem.quantity += 1;
+      } else {
+        cart.push({
+        productId: productIdPlaceholder, 
+        quantity: 1
+      });
+      }
+
+      let cartQuantity = 0;
+      cart.forEach(item => {
+        cartQuantity += item.quantity;
+      });
+
+      document.querySelector('.jsCartQuantity')
+        .innerHTML = cartQuantity;
+    });
+  }); 
