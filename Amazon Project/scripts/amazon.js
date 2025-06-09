@@ -82,6 +82,7 @@ document.querySelectorAll('.jsAddToCart')
         }
       });
 
+      
       const quantitySelectorElement = document.querySelector
         (`.jsQuantitySelector-${productIdPlaceholder}`
       );
