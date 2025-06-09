@@ -34,7 +34,7 @@ products.forEach(product => {
       </div>
 
       <div class="product-quantity-container">
-        <select>
+        <select class="jsQuantitySelector-${product.id}">
           <option selected value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -67,9 +67,11 @@ document.querySelector('.jsProductsGrid')
   .innerHTML = productsHtml;
 
 document.querySelectorAll('.jsAddToCart')
+  // productId - is from HTML dataset from the add to cart
   .forEach(button => {
     button.addEventListener('click', () => {
       const productIdPlaceholder = button.dataset.productId;
+      // const { productId: productIdPlaceholder } = button.dataset;
       productIdPlaceholder;
 
       let matchingItem;
@@ -80,13 +82,20 @@ document.querySelectorAll('.jsAddToCart')
         }
       });
 
+      const quantitySelectorElement = document.querySelector
+        (`.jsQuantitySelector-${productIdPlaceholder}`
+      );
+
+      const quantitySelector = quantitySelectorElement ? Number(quantitySelectorElement.value) : 1;
+
+      // 'quantity' which is an object came from cart.push 
       if (matchingItem){
-        matchingItem.quantity += 1;
+        matchingItem.quantity += quantitySelector;
       } else {
         cart.push({
-        productId: productIdPlaceholder, 
-        quantity: 1
-      });
+          productId: productIdPlaceholder, 
+          quantity: quantitySelector
+        });
       }
 
       let cartQuantity = 0;
@@ -94,6 +103,7 @@ document.querySelectorAll('.jsAddToCart')
         cartQuantity += item.quantity;
       });
 
+      // HTML of the cart quantity
       document.querySelector('.jsCartQuantity')
         .innerHTML = cartQuantity;
     });
