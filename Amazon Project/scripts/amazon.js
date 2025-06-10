@@ -66,6 +66,7 @@ products.forEach(product => {
 document.querySelector('.jsProductsGrid')
   .innerHTML = productsHtml;
 
+let timeoutId;
 document.querySelectorAll('.jsAddToCart')
   // productId - is from HTML dataset from the add to cart
   .forEach(button => {
@@ -115,11 +116,13 @@ document.querySelectorAll('.jsAddToCart')
 
       const productContainer = button.closest('.product-container');
       const addedHtml = productContainer.querySelector('.added-to-cart');
+
+      // Added to cart functionality when the button is pressed
+      addedHtml.classList.add('addedToCartCss');
+      clearTimeout(timeoutId);
       
-      if (!addedHtml.classList.contains('addedToCartCss')){
-        addedHtml.classList.add('addedToCartCss');
-      } else {
-        addedHtml.classList.remove('addedToCartCss');
-      }
+      timeoutId = setTimeout(() => {
+          addedHtml.classList.remove('addedToCartCss');
+        }, 2000);
     });
   }); 
