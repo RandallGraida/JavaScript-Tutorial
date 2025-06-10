@@ -11,7 +11,7 @@ products.forEach(product => {
         objects and arrays to the JavaScript code into the actual add to cart in the html part
   */
    productsHtml += `
-    <div class="p roduct-container">
+    <div class="product-container">
       <div class="product-image-container">
         <img class="product-image"
           src="${product.image}">
@@ -70,8 +70,8 @@ document.querySelectorAll('.jsAddToCart')
   // productId - is from HTML dataset from the add to cart
   .forEach(button => {
     button.addEventListener('click', () => {
+      // productIdPlaceholder is the variable, productId is the HTML data attribute
       const productIdPlaceholder = button.dataset.productId;
-      // const { productId: productIdPlaceholder } = button.dataset;
       productIdPlaceholder;
 
       let matchingItem;
@@ -82,7 +82,6 @@ document.querySelectorAll('.jsAddToCart')
         }
       });
 
-      
       const quantitySelectorElement = document.querySelector
         (`.jsQuantitySelector-${productIdPlaceholder}`
       );
@@ -107,5 +106,20 @@ document.querySelectorAll('.jsAddToCart')
       // HTML of the cart quantity
       document.querySelector('.jsCartQuantity')
         .innerHTML = cartQuantity;
+
+      // HTML of the word 'added' when you add items in the cart
+      /* 
+        'button.closest' - finds the closest parent div in order to
+          avoid getting the only first class in the HTML element/s
+      */
+
+      const productContainer = button.closest('.product-container');
+      const addedHtml = productContainer.querySelector('.added-to-cart');
+      
+      if (!addedHtml.classList.contains('addedToCartCss')){
+        addedHtml.classList.add('addedToCartCss');
+      } else {
+        addedHtml.classList.remove('addedToCartCss');
+      }
     });
   }); 
