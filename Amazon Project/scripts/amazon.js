@@ -1,3 +1,17 @@
+// Modules - allows you to access other files without naming conflicts from 'src' in HTML file
+/* 
+  * import module variable names can be changed through
+    ex. "import { cart as myCart } from cart "
+  * Do not create a same name variable when dealing with modules
+    as it will cause naming conflict
+    ex. "
+          import { cart } from cart
+          const cart = [];
+        "
+*/
+import { cart, addToCart } from "../data/cart.js";
+import { products } from "../data/products.js";
+
 let productsHtml = '';
 
 products.forEach(product => {
@@ -63,10 +77,41 @@ products.forEach(product => {
   `;
 });
 
+// HTML of the Amazon Products
 document.querySelector('.jsProductsGrid')
   .innerHTML = productsHtml;
 
+function updateCartQuantity(){
+  let cartQuantity = 0;
+  cart.forEach(item => {
+    cartQuantity += item.quantity;
+  });
+
+  // HTML of the cart quantity
+  document.querySelector('.jsCartQuantity')
+    .innerHTML = cartQuantity;
+}
+
 let timeoutId;
+function updateCartQuantityCSS(buttonParameter){
+  // HTML of the word 'added' when you add items in the cart
+  /* 
+    'button.closest' - finds the closest parent div in order to
+      avoid getting the only first class in the HTML element/s
+  */
+
+  const productContainer = buttonParameter.closest('.product-container');
+  const addedHtml = productContainer.querySelector('.added-to-cart');
+
+  // Added to cart functionality when the button is pressed
+  addedHtml.classList.add('addedToCartCss');
+  clearTimeout(timeoutId);
+  
+  timeoutId = setTimeout(() => {
+      addedHtml.classList.remove('addedToCartCss');
+    }, 2000);
+}
+
 document.querySelectorAll('.jsAddToCart')
   // productId - is from HTML dataset from the add to cart
   .forEach(button => {
@@ -75,54 +120,8 @@ document.querySelectorAll('.jsAddToCart')
       const productIdPlaceholder = button.dataset.productId;
       productIdPlaceholder;
 
-      let matchingItem;
-
-      cart.forEach(item => {
-        if (productIdPlaceholder === item.productId){ 
-          matchingItem = item;
-        }
-      });
-
-      const quantitySelectorElement = document.querySelector
-        (`.jsQuantitySelector-${productIdPlaceholder}`
-      );
-
-      const quantitySelector = quantitySelectorElement ? Number(quantitySelectorElement.value) : 1;
-
-      // 'quantity' which is an object came from cart.push 
-      if (matchingItem){
-        matchingItem.quantity += quantitySelector;
-      } else {
-        cart.push({
-          productId: productIdPlaceholder, 
-          quantity: quantitySelector
-        });
-      }
-
-      let cartQuantity = 0;
-      cart.forEach(item => {
-        cartQuantity += item.quantity;
-      });
-
-      // HTML of the cart quantity
-      document.querySelector('.jsCartQuantity')
-        .innerHTML = cartQuantity;
-
-      // HTML of the word 'added' when you add items in the cart
-      /* 
-        'button.closest' - finds the closest parent div in order to
-          avoid getting the only first class in the HTML element/s
-      */
-
-      const productContainer = button.closest('.product-container');
-      const addedHtml = productContainer.querySelector('.added-to-cart');
-
-      // Added to cart functionality when the button is pressed
-      addedHtml.classList.add('addedToCartCss');
-      clearTimeout(timeoutId);
-      
-      timeoutId = setTimeout(() => {
-          addedHtml.classList.remove('addedToCartCss');
-        }, 2000);
+      addToCart(productIdPlaceholder);
+      updateCartQuantity();
+      updateCartQuantityCSS(button);
     });
   }); 
