@@ -100,7 +100,6 @@ function updateCartQuantityCSS(buttonParameter){
     'button.closest' - finds the closest parent div in order to
       avoid getting the only first class in the HTML element/s
   */
-
   const productContainer = buttonParameter.closest('.product-container');
   const addedHtml = productContainer.querySelector('.added-to-cart');
 
