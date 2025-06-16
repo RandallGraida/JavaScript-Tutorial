@@ -55,11 +55,18 @@ export function removeFromCart(productId){
   saveToStorage();
 }
 
-export function cartQuantityCalculation(){
+export function cartQuantityCalculation(calculationPathParameter){
   let cartQuantity = 0;
   cart.forEach(cartItem => {
     cartQuantity += cartItem.quantity;
   });
 
-  return cartQuantity;
+  if (calculationPathParameter === 'amazonHomePage'){
+    document.querySelector('.jsCartQuantity')
+      .innerHTML = cartQuantity;
+  }
+  if (calculationPathParameter === 'amazonCheckoutPage'){
+    document.querySelector('.jsCheckoutCounter')
+      .innerHTML = `${cartQuantity} items`;
+  }
 }

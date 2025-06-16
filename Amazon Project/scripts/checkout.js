@@ -115,8 +115,5 @@ document.querySelectorAll('.jsDeleteLink')
 
 checkoutCounter();
 function checkoutCounter(){
-  const cartQuantity= cartQuantityCalculation();
-  
-  document.querySelector('.jsCheckoutCounter')
-    .innerHTML = `${cartQuantity} items`;
+  cartQuantityCalculation('amazonCheckoutPage');
 }

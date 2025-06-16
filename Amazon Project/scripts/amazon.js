@@ -85,12 +85,8 @@ document.querySelector('.jsProductsGrid')
 
 updateCartQuantity();
 function updateCartQuantity(){
-  const cartQuantity = cartQuantityCalculation();
-
-  // Creation of the HTML on the cart Quantity
-    document.querySelector('.jsCartQuantity')
-      .innerHTML = cartQuantity;
-  };
+  cartQuantityCalculation('amazonHomePage');
+};
 
 let timeoutId;
 function updateCartQuantityCSS(buttonParameter){
