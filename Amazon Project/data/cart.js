@@ -11,7 +11,6 @@ if (!cart){
   }];
 }
 
-
 export function addToCart(productIdParameter){
   let matchingItem;
 
@@ -56,10 +55,10 @@ export function removeFromCart(productId){
   saveToStorage();
 }
 
-export function calaculateCartQuantity(){
+export function cartQuantityCalculation(){
   let cartQuantity = 0;
   cart.forEach(cartItem => {
-    counter += cartItem.quantity;
+    cartQuantity += cartItem.quantity;
   });
 
   return cartQuantity;
