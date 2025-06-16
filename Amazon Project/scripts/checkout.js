@@ -7,7 +7,7 @@ let cartSummaryHTML = '';
 cart.forEach(cartItem => {
   const productId = cartItem.productId;
 
-  let matchingProduct;
+  let matchingProduct; 
 
   products.forEach(product => {
     if (product.id === productId){
@@ -107,5 +107,18 @@ document.querySelectorAll('.jsDeleteLink')
       // Removes the whole container of the checkout product
       const container = document.querySelector(`.jsCartItemContainer-${productId}`);
       container.remove();
+
+      checkoutCounter();
     });
   });
+
+checkoutCounter();
+function checkoutCounter(){
+  let counter = 0;
+  cart.forEach(cartItem => {
+    counter += cartItem.quantity;
+  });
+  
+  document.querySelector('.jsCheckoutCounter')
+    .innerHTML = `${counter} items`;
+}

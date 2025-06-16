@@ -11,6 +11,7 @@ if (!cart){
   }];
 }
 
+
 export function addToCart(productIdParameter){
   let matchingItem;
 
@@ -24,14 +25,14 @@ export function addToCart(productIdParameter){
     (`.jsQuantitySelector-${productIdParameter}`
   );
   const quantitySelector = quantitySelectorElement ? Number(quantitySelectorElement.value) : 1;
-
+  
   // 'quantity' which is an object came from cart.push 
   if (matchingItem){
     matchingItem.quantity += quantitySelector;
   } else {
     cart.push({
       productId: productIdParameter, 
-      quantity: quantitySelector
+      quantity: quantitySelector,
     });
   }
 
@@ -53,4 +54,13 @@ export function removeFromCart(productId){
 
   cart = newCart;
   saveToStorage();
+}
+
+export function calaculateCartQuantity(){
+  let cartQuantity = 0;
+  cart.forEach(cartItem => {
+    counter += cartItem.quantity;
+  });
+
+  return cartQuantity;
 }

@@ -51,7 +51,7 @@ function resetConfirmation(){
 	const resetButtonMessagePlaceholder = document.querySelector('.resetButtonMessage');
 
 	/* 
-		Seperate the varibale.innerHTML before clearing it to avoid conflicts if you 
+		Separate the variable.innerHTML before clearing it to avoid conflicts if you 
 		directly manipulate the variable with innerHTML assigned to it
 	*/
   resetButtonMessagePlaceholder.innerHTML = `
