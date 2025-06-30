@@ -209,3 +209,17 @@
   margin-top: 11px;
   margin-bottom: 15px;
 }
+
+.quantityInput,
+.saveQuantityLink {
+  display: none;
+}
+
+.isEditingQuantity .quantityInput,
+.isEditingQuantity .saveQuantityLink {
+  display: inline-block;
+}
+
+.isEditingQuantity .quantityInput {
+  width: 30px;
+}

@@ -39,13 +39,19 @@ export function addToCart(productIdParameter){
 }
 
 function saveToStorage(){
-  localStorage.setItem('cart',JSON.stringify(cart));
+  localStorage.setItem('cart', JSON.stringify(cart));
 }
 
+/**
+ * Removes a product from the shopping cart by its product ID.
+ * Iterates through the current cart and creates a new cart array excluding
+ * the item with the specified productId. Updates the cart and saves the changes to storage.
+ * @param {string} productId - The unique identifier of the product to remove from the cart.
+*/
 export function removeFromCart(productId){
   const newCart = [];
 
-  cart.forEach(cartItem => {
+  cart.forEach(cartItem => { 
     if (cartItem.productId !== productId){
       newCart.push(cartItem);
     }
@@ -57,6 +63,7 @@ export function removeFromCart(productId){
 
 export function cartQuantityCalculation(calculationPathParameter){
   let cartQuantity = 0;
+
   cart.forEach(cartItem => {
     cartQuantity += cartItem.quantity;
   });
@@ -69,4 +76,18 @@ export function cartQuantityCalculation(calculationPathParameter){
     document.querySelector('.jsCheckoutCounter')
       .innerHTML = `${cartQuantity} items`;
   }
+}
+
+export function updateQuantity(productId, newQuantity){
+  let matchingItem;
+
+  cart.forEach(cartItem => {
+    if (productId === cartItem.productId){
+      matchingItem = cartItem;
+    }
+  });
+
+  matchingItem.quantity = newQuantity;
+
+  saveToStorage();
 }

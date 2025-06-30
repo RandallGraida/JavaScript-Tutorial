@@ -9,10 +9,9 @@
           const cart = [];
         "
 */
-import {cart, addToCart} from "../data/cart.js";
+import {addToCart, cartQuantityCalculation} from "../data/cart.js";
 import {products} from "../data/products.js";
 import {formatCurrency} from "./utils/money.js"; 
-import { cartQuantityCalculation,  } from "../data/cart.js";
 
 let productsHtml = '';
 
@@ -63,7 +62,7 @@ products.forEach(product => {
           <option value="10">10</option>
         </select>
       </div>
-
+ 
       <div class="product-spacer"></div>
 
       <div class="added-to-cart">
@@ -88,7 +87,6 @@ function updateCartQuantity(){
   cartQuantityCalculation('amazonHomePage');
 };
 
-let timeoutId;
 function updateCartQuantityCSS(buttonParameter){
   // HTML of the word 'added' when you add items in the cart
   /* 
@@ -99,11 +97,12 @@ function updateCartQuantityCSS(buttonParameter){
   const addedHtml = productContainer.querySelector('.added-to-cart');
 
   // Added to cart functionality when the button is pressed
+  clearTimeout(addedHtml.timeoutId);
   addedHtml.classList.add('addedToCartCss');
-  clearTimeout(timeoutId);
   
-  timeoutId = setTimeout(() => {
+  addedHtml.timeoutId = setTimeout(() => {
       addedHtml.classList.remove('addedToCartCss');
+      addedHtml.timeoutId = null;
     }, 2000);
 }
 
