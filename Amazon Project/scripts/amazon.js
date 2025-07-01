@@ -9,9 +9,9 @@
           const cart = [];
         "
 */
-import {addToCart, cartQuantityCalculation} from "../data/cart.js";
-import {products} from "../data/products.js";
-import {formatCurrency} from "./utils/money.js"; 
+import { addToCart, cartQuantityCalculation } from "../data/cart.js";
+import { products } from "../data/products.js";
+import { formatCurrency } from "./utils/money.js"; 
 
 let productsHtml = '';
 
@@ -81,7 +81,7 @@ products.forEach(product => {
 // HTML of the Amazon Products
 document.querySelector('.jsProductsGrid')
   .innerHTML = productsHtml;
-
+  
 updateCartQuantity();
 function updateCartQuantity(){
   cartQuantityCalculation('amazonHomePage');
