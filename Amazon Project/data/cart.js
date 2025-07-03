@@ -79,8 +79,16 @@ export function cartQuantityCalculation(calculationPathParameter){
     document.querySelector('.jsCheckoutCounter')
       .innerHTML = `${cartQuantity} items`;
   }
+  if (calculationPathParameter === 'paymentSummary'){
+    document.querySelector('.js-paymentItemCount')
+      .innerHTML = `Items (${cartQuantity}):`;
+  }
 }
 
+/* 
+  Updates the quantity of a specific product in the cart and 
+  persists the change to localStorage.
+*/
 export function updateQuantity(productId, newQuantity){
   let matchingItem;
 
@@ -91,6 +99,24 @@ export function updateQuantity(productId, newQuantity){
   });
 
   matchingItem.quantity = newQuantity;
+
+  saveToStorage();
+}
+
+/* 
+  This function updates the delivery option for a specific product in the 
+  cart, then saves the updated cart to local storage.
+*/
+export function updateDeliveryOption(productId, deliveryOptionId){
+  let matchingItem;
+
+  cart.forEach(cartItem => {
+    if (productId === cartItem.productId){
+      matchingItem = cartItem;
+    }
+  });
+
+  matchingItem.deliveryOptionId = deliveryOptionId;
 
   saveToStorage();
 }
