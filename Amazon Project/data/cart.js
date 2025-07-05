@@ -1,12 +1,11 @@
-export let cart; 
+export let cart;
 
 loadFromStorage();
 
-// Mock localStorage.getItem for testing
-export function loadFromStorage(){
-  cart = JSON.parse(localStorage.getItem('cart'));
+function loadFromStorage(){
+  JSON.parse(localStorage.getItem('cart'));
 
-  // This is the default value of the cart  
+// This is the default value of the cart  
   if (!cart){
     cart = [{
       productId: 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6',
