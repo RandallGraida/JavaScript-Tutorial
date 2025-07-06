@@ -25,6 +25,7 @@ describe('Test suite: addToCart', () => {
     // Mocks - replace a method with a fake version
     spyOn(localStorage, 'setItem');
 
+    // .and.callFake() - tells Jasmine to use your provided function instead of the real getItem method whenever it's called during the test
     spyOn(localStorage, 'getItem').and.callFake(() => {
       return JSON.stringify([]);
     });
