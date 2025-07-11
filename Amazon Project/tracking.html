@@ -88,5 +88,12 @@
         </div>
       </div>
     </div>
+
+    <script>
+      // Gets the URL
+      const url = new URL(window.location.href);
+      // Searches the URL parameters
+      console.log(url.searchParams.get('productId'));
+    </script>
   </body>
 </html>
