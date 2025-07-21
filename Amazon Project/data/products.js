@@ -1,7 +1,20 @@
+/**
+ * Fetch
+ * - makes an http request
+ * 
+ * Inheritance
+ * - allows to reuse another Class
+ * 
+ * super()
+ * - calls constructor of parent class
+ * 
+ * target="_blank"
+ * - opens a new tab
+ */
 import { formatCurrency } from "../scripts/utils/money.js";
 
+// Fetch products from backend
 export function loadProductsFetch(){
-  // Fetch - makes an http request, also a promise
   const promise = fetch('https://supersimplebackend.dev/products').then(response => {
     return response.json();
   }).then(productsData => {
@@ -20,6 +33,7 @@ export function loadProductsFetch(){
   return promise;
 }
 
+// Get product ID
 export function getProduct(productId){
   let matchingProduct; 
 
@@ -60,19 +74,16 @@ class Product {
   }
 }
 
-// Inheritance - allows to reuse another Class
+// Size chart for clothing
 class Clothing extends Product{
   sizeChartLink;
 
-  // When empty, it runs the constructor of the parent Class
   constructor(productDetails){
-    // Calls the constructor of the parent Class
     super(productDetails);
     this.sizeChartLink = productDetails.sizeChartLink;
   }
 
   extraInfoHTML(){
-    // target="_blank" - opens a new tab
     return `
       <a href="${this.sizeChartLink}" target="_blank">Size chart</a>
     `;
@@ -98,7 +109,6 @@ export function loadProducts(fun){
     fun();
   });
 
-  // Error handler in the when fetching API
   xhr.addEventListener('error', error => {
     console.log('Unexpected error. Please try again later');
   });

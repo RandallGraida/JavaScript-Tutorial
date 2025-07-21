@@ -1,12 +1,14 @@
+// Cart
 export let cart; 
 
+// Render local storage
 loadFromStorage();
 
-// Mock localStorage.getItem for testing
+// Local storage
 export function loadFromStorage(){
   cart = JSON.parse(localStorage.getItem('cart'));
 
-  // This is the default value of the cart  
+  // Default cart value 
   if (!cart){
     cart = [{
       productId: 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6',
@@ -20,6 +22,7 @@ export function loadFromStorage(){
   }
 }
 
+// Add to cart
 export function addToCart(productIdParameter){
   let matchingItem;
 
@@ -34,7 +37,6 @@ export function addToCart(productIdParameter){
   );
   const quantitySelector = quantitySelectorElement ? Number(quantitySelectorElement.value) : 1;
   
-  // 'quantity' which is an object came from cart.push 
   if (matchingItem){
     matchingItem.quantity += quantitySelector;
   } else {
@@ -48,16 +50,12 @@ export function addToCart(productIdParameter){
   saveToStorage();
 }
 
+// Save to localStorage
 function saveToStorage(){
   localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-/**
- * Removes a product from the shopping cart by its product ID.
- * Iterates through the current cart and creates a new cart array excluding
- * the item with the specified productId. Updates the cart and saves the changes to storage.
- * @param {string} productId - The unique identifier of the product to remove from the cart.
-*/
+// Remove from cart
 export function removeFromCart(productId){
   const newCart = [];
 
@@ -71,6 +69,7 @@ export function removeFromCart(productId){
   saveToStorage();
 }
 
+// Cart quantity
 export function cartQuantityCalculation(calculationPathParameter){
   let cartQuantity = 0;
 
@@ -92,10 +91,7 @@ export function cartQuantityCalculation(calculationPathParameter){
   }
 }
 
-/* 
-  Updates the quantity of a specific product in the cart and 
-  persists the change to localStorage.
-*/
+// Update quantity
 export function updateQuantity(productId, newQuantity){
   let matchingItem;
 
@@ -110,10 +106,7 @@ export function updateQuantity(productId, newQuantity){
   saveToStorage();
 }
 
-/* 
-  This function updates the delivery option for a specific product in the 
-  cart, then saves the updated cart to local storage.
-*/
+// Update delivery option
 export function updateDeliveryOption(productId, deliveryOptionId){
   let matchingItem;
 
@@ -128,6 +121,7 @@ export function updateDeliveryOption(productId, deliveryOptionId){
   saveToStorage();
 }
 
+// Load cart from backend
 export function loadCart(fun){
   const xhr = new XMLHttpRequest();
 

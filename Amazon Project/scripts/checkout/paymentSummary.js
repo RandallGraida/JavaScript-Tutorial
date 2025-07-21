@@ -1,9 +1,25 @@
+/*
+* GET - get something from the backend   
+* POST - create, send data from the backend
+* PUT - update 
+* DELETE - delete
+*
+* headers
+* - gives the backend more information about the request
+*
+* body
+* - actual data to send to the backend
+*
+* window.location
+* - is a object, controls the URL in the browser
+*/
 import { cart, cartQuantityCalculation } from "../../data/cart.js";
 import { getProduct } from "../../data/products.js";
 import { getDeliveryOption } from "../../data/deliveryOptions.js";
 import { formatCurrency } from "../utils/money.js";
-import { addOrder, orders } from "../../data/orders.js";
+import { addOrder } from "../../data/orders.js";
 
+// Renders the order summary panel
 export function renderPaymentSummary(){
   let productPriceCents = 0;
   let shippingPriceCents = 0;
@@ -55,41 +71,36 @@ export function renderPaymentSummary(){
     </button>
   `;
 
+  // Render payment summary
   document.querySelector('.js-paymentSummary')
     .innerHTML = paymentSummaryHTML;
 
-  /*
-    GET - get something from the backend
-    POST - create, send data from the backend
-    PUT - update 
-    DELETE - delete 
-  */
+  // Placing order
   document.querySelector('.js-placeOrder')
     .addEventListener('click', async () => {
       try {
         const response = await fetch('https://supersimplebackend.dev/orders', {
         method: 'POST',
-        // headers - gives the backend more information about the request
         headers: {
           'Content-Type': 'application/json'
         },
-        // body - actual data to send to the backend
         body: JSON.stringify({
           cart: cart
         })
       });
-      // Waits for the response to finish first
       const order = await response.json();
       addOrder(order);
       } catch (error){
         console.log('Unexpected error, try again later.')
       }
 
-      // window.location - is a object, controls the URL in the browser
       window.location.href = 'orders.html';
     });
 
+  // Render cart quantity
   itemCount();
+
+  // Cart quantity
   function itemCount(){
     cartQuantityCalculation('paymentSummary');
   }
