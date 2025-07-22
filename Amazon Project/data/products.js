@@ -25,7 +25,6 @@ export function loadProductsFetch(){
       return new Product(productDetails);
   });
   console.log('load products');
-  // Error handler in the fetch
   }).catch(() => { 
       console.log('Unexpected error. Please try again later');
   });

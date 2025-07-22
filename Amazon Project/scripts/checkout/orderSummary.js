@@ -1,3 +1,7 @@
+/**
+ * dayjs()
+ * - library, allows dates
+ */
 import { cart, removeFromCart, cartQuantityCalculation , updateQuantity, updateDeliveryOption } from "../../data/cart.js";
 import { getProduct } from "../../data/products.js";
 import { formatCurrency } from "../utils/money.js";
@@ -6,6 +10,7 @@ import { deliveryOptions, getDeliveryOption } from "../../data/deliveryOptions.j
 import { renderPaymentSummary } from "./paymentSummary.js";
 import { calculateDeliveryDate } from "../../data/deliveryOptions.js";
 
+// Render order summary
 export function renderOrderSummary(){
   let cartSummaryHTML = '';
 
@@ -17,14 +22,7 @@ export function renderOrderSummary(){
     const deliveryOptionId = cartItem.deliveryOptionId;
 
     const deliveryOption = getDeliveryOption(deliveryOptionId);
-    
-  /* 
-    * dayjs - comes from external library in checkout.html
-    .format - dayjs method
-      * d - day
-      * M - month
-      * D - date
-  */ 
+
     const today = dayjs();
 
     const deliveryDate = today.add(
@@ -84,13 +82,7 @@ export function renderOrderSummary(){
     `;
   });
 
-  /* 
-    This code loops through each available delivery option, calculates the 
-    estimated delivery date using the dayjs library, formats the delivery 
-    date and price, checks if the option is selected, and builds an HTML 
-    string to display each delivery option with its date, price, and 
-    selection status.
-  */
+  // Render delivery options
   function deliverOptionsHTML(matchingProduct, cartItem){
     let html = '';
 
@@ -129,9 +121,11 @@ export function renderOrderSummary(){
     return html;
   }
 
+  // Render order summary
   document.querySelector('.jsOrderSummary')
     .innerHTML = cartSummaryHTML;
 
+  // Update product
   document.querySelectorAll('.jsCheckoutUpdate')
   .forEach(link => {
       link.addEventListener('click', () => {
@@ -142,6 +136,7 @@ export function renderOrderSummary(){
       });
     });
 
+  // Save updated product 
   document.querySelectorAll('.jsSaveLink')
     .forEach(link => {
       link.addEventListener('click', () => {
@@ -164,6 +159,7 @@ export function renderOrderSummary(){
       });
     });
 
+  // Remove product
   document.querySelectorAll('.jsDeleteLink')
     .forEach(link => {
       link.addEventListener('click', () => {
@@ -179,20 +175,22 @@ export function renderOrderSummary(){
       });
     });
 
+  // Update delivery options 
   document.querySelectorAll('.js-DeliveryOption')
     .forEach(element => {
       element.addEventListener('click', () => {
         const {productId, deliveryOptionId} = element.dataset;
         updateDeliveryOption(productId, deliveryOptionId);
 
-        // Renders all the code in order to update the HTML 
-        // Also known as Model View Controller (MVC)
         renderOrderSummary();
         renderPaymentSummary();
       });
     });
 
+  // Render cart quantity
   checkoutCounter();
+
+  // Cart quantity
   function checkoutCounter(){
     cartQuantityCalculation('amazonCheckoutPage');
   }
